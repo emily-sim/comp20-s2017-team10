@@ -18,9 +18,9 @@ Features
 
 Technologies and Ideas
 Server Side Data Persistence: needing to store data that our game generates in the long term eg high scores from the beginning of time
-Front end framework: bootstrap etc
-RESTful API framework: without refreshing the page your data gets sent from the page etc
-Reporting with charts and graphs: world map, where the users are from, high scores, user’s progress over time, checking regional times
+Front end framework: bootstrap etc. 
+RESTful API framework: without refreshing the page your data gets sent from the page etc. 
+Reporting with charts and graphs: world map, where the users are from, high scores, user’s progress over time, checking regional times. 
 
 We will be using and collecting:
 - The user’s location
