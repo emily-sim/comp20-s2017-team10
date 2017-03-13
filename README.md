@@ -34,3 +34,6 @@ Algorithms/Special Techniques
 User interaction with game: we don’t want to regenerate the web page with each new question in the round. We need a while loop that will request however many songs from the Spotify API while the game is being played.
 
 Electronic Mockups
+
+#comments by Ming
+* LOL, the previous team I just reviewed (team 9) also have a very similar idea. This is great. How sad no one even thought of this last semester.
