@@ -1,6 +1,18 @@
 .navbar-brand {
-	font-family: Monoton;
+	font-family: 'Monoton';
 	font-size: 30px;
+}
+
+/* how to make the vertical alignment responsive? */
+#container{
+    text-align: center;
+    padding-top: 200px;
+}
+
+.intro-text {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 42px;
+    color: white;
 }
 
 video#bgvid { 
