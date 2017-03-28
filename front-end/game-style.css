@@ -1,0 +1,190 @@
+/* game-style.css */
+
+body {
+	/*background-color: #5c5c5c;*/
+	background-color: black;
+}
+
+h1 {
+	font-family: 'Arvo', sans-serif;
+	font-size: 35px;
+	font-weight: bold;
+	color: #d3d3d3;
+	/*width: 70%;*/
+	text-align: center;
+	/*border-bottom: 1px solid black;
+	padding-bottom: 5px;*/
+}
+
+/* navigation bar */
+.navbar-brand {
+	font-family: 'Monoton';
+	font-size: 30px;
+}
+
+/* how to make the vertical alignment responsive? */
+#container {
+    text-align: center;
+    padding-top: 200px;
+}
+
+/* timer bar */
+/*
+.timer-container {
+	/*font-family: 'Open sans', sans-serif;
+	font-family: 'Roboto Slab', sans-serif;
+	font-size: 20px;
+	font-weight: bold;
+	color: #d3d3d3;
+	text-align: left;
+	margin-left: 20%;
+	margin-top: 50px;
+}
+*/
+.timer {
+	display: block;
+	width: 65%; 
+	margin: 0 auto; 
+	margin-top: 10px ; 
+	border-radius: 13px;
+	background-color: #e5c9c9;
+	
+}
+
+#bar {
+	width: 0%;
+	height: 30px;
+	/* border-radius: 13px 0px 0px 13px; */
+	border-radius: 13px;
+	background-color: #d3d3d3;
+	text-align: center;
+	font-family: 'Gill Sans Extrabold', sans-serif;
+	color: #515151;
+}
+
+#time {
+	font-family: 'Roboto Slab', sans-serif;
+	font-size: 15px;
+	color: #d3d3d3;
+	text-align: center;
+	/*margin-left: 50%;*/
+	margin-top: 10px;
+}
+
+/*
+.multChoices {
+	text-align: left;
+	margin: 0 auto;
+}
+*/
+
+/* multiple choice options */
+h2 {
+	font-family: 'Arvo', sans-serif;
+	font-size: 25px;
+	font-weight: bold;
+	color: #d8baba;
+}
+
+.choices {
+	/*list-style-type: none;*/
+	margin-top: 70px;
+	margin-left: 15%;
+	color: white;
+}
+
+.choices ol {
+	/*list-style: none;*/
+	height: 100%;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+ol li {
+	color: #d2baba;
+	font-family: 'Roboto Slab', sans-serif;
+	font-size: 20px;
+	display: block;
+	position: relative;
+	float: left;
+	width: 60%;
+	height: 50px;
+	/*border-bottom: 1px solid #111111;*/
+}
+
+ol li input[type="radio"] {
+	display: none;
+
+
+	/*position: absolute;
+	visibility: hidden;*/
+}
+ol li input[type="radio"] + label span {
+	display: inline-block;
+	width: 25px;
+	height: 25px;
+	margin-right: 7px;
+	background: url("unchecked.png"); 
+	/* source: https://learnopengl.com/img/advanced/blending_transparent_window.png */
+	cursor: pointer;
+}
+ol li input[type="radio"]:checked + label span {
+	background: url("checked.png");
+} 
+
+ol li label {
+	display: block;
+	position: relative;
+	font-weight: 300;
+	padding: 25px 10px 10px 10px;
+	margin: 10px auto;
+	height: 50px;
+}
+/*
+ul li:hover label {
+	background: white;
+}
+
+ul li .check {
+	display: block;
+	position: absolute;
+	border: 5px solid #aaaaaa;
+	border-radius: 100%;
+	height:  25px;
+	width: 25px;
+	top: 30px;
+	left: 20px;
+	z-index: 5;
+	transition: border .25s linear;
+	-webkit-transition: border .25s linear;
+}
+
+ul li:hover .check {
+	border: 5px solid #ffffff;
+}
+
+ul li .check::before 
+
+*/
+.albumcover {
+	width: 20%;
+	height: auto;
+	position: absolute;
+	right: 25%;
+	top: 240px;
+}
+
+/*
+img {
+	width: 100%;
+	height: auto;
+	position: absolute;
+	padding-right: 20%;
+	top: 250px;
+}
+*/
+
+
+
+

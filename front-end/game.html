@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<title>MIXR</title>
+	
+	<!-- added -->
+	<link href="https://fonts.googleapis.com/css?family=Monoton" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Arvo" rel="stylesheet">
+
+
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="game-style.css" />
+
+	<script type="text/javascript"></script>
+	<script src="node_modules/bootstrap"></script> 
+	<script src="https://cdn.rawgit.com/kimmobrunfeldt/progressbar.js/0.5.6/dist/progressbar.js"></script>
+
+	<!-- added -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+	<!-- <script src="node_modules/progressbar.js"></script> -->
+
+	<script>
+
+	
+	function move() {
+			var elem = document.getElementById("bar");
+			var time = document.getElementById("time");
+			var width = 0;
+			var id = setInterval(frame, 900);
+			function frame() {
+					if (width >= 100) {
+						time.innerHTML = "Time's up!"
+						clearInterval(id);
+					} else {
+						width++;
+						elem.style.width = width + '%';
+						time.innerHTML = (100 - width * 1) + ' s';
+					}
+			}
+	}
+	
+
+/*
+	
+	var bar = new ProgressBar.Line('#timer', {
+		color: '#c2c1bb',
+		trailColor: 'pink',
+		strokeWidth: 7,
+		trailWidth: 7,
+		easing: 'easeInOut',
+		duration: 120
+	});
+*/
+	</script>
+
+</head>
+
+<body onload="move()">
+
+<!--Navigation Bar-->
+	<nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+       				<span class="icon-bar"></span>
+        			<span class="icon-bar"></span>
+        			<span class="icon-bar"></span> 
+      			</button>
+				<a class="navbar-brand" href="#">MIXR</a>
+			</div>
+			<div class="collapse navbar-collapse" id="myNavbar">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="#"><span class="glyphicon glyphicon-list-alt"></span> Leaderboard</a></li>
+					<li><a href="#"><span class="glyphicon glyphicon-user"></span> Login</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+
+<h1>Let's Play!</h1>
+
+
+<!--Timer-->
+<div class="timer-container">
+	<div id="time">100 s</div>
+	<div class="timer">
+		<div id="bar"></div> 
+	</div>
+</div>
+
+
+<!--Multiple Choice Options-->
+<ol class="choices">
+	
+		<h2>Can you guess the song?</h2>
+
+		<!-- use spotify api to get actual song names -->
+		<li>
+			<input type="radio" name="answer" id="answer-A" value="A" />
+			<label for="answer-A"><span></span>Song 1</label>
+		</li>
+
+		<li>
+			<input type="radio" name="answer" id="answer-B" value="B" />
+			<label for="answer-B"><span></span>Song 2</label>
+		</li>
+
+		<li>
+			<input type="radio" name="answer" id="answer-C" value="C" />
+			<label for="answer-C"><span></span>Song 3</label>
+		</li>
+
+		<li>
+			<input type="radio" name="answer" id="answer-D" value="D" />
+			<label for="answer-D"><span></span>Song 4</label>
+		</li>
+	
+</ol>	
+
+
+<div class="albumcover">
+	<p><img alt="spinning record player gif" src="spinning-record.gif" /></p>
+	<!-- source: https://thumbs.gfycat.com/AcidicJollyIrukandjijellyfish-size_restricted.gif -->
+</div>
+
+
+
+</body>
+
+</html>
