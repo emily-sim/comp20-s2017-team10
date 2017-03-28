@@ -14,6 +14,10 @@
     background-color: black;
 }
 
+.row {
+	margin-bottom: 20px;
+}
+
 .image {
     display: block;
     width: 100%;
@@ -47,4 +51,8 @@ h2 {
     left: 50%;
     transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
+}
+
+body {
+	background-color: black;
 }
