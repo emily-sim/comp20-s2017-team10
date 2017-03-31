@@ -56,7 +56,7 @@ h1 {
 	height: 30px;
 	/* border-radius: 13px 0px 0px 13px; */
 	border-radius: 13px;
-	background-color: #d3d3d3;
+	background-color: #bfbfbf;
 	text-align: center;
 	font-family: 'Gill Sans Extrabold', sans-serif;
 	color: #515151;
@@ -79,11 +79,13 @@ h1 {
 */
 
 /* multiple choice options */
+
+/* "Can you guess the song?" */
 h2 {
 	font-family: 'Arvo', sans-serif;
 	font-size: 25px;
 	font-weight: bold;
-	color: #d8baba;
+	color: #f2f2f2; /*#d8baba;*/
 }
 
 .choices {
@@ -104,7 +106,7 @@ h2 {
 ol li {
 	color: #d2baba;
 	font-family: 'Roboto Slab', sans-serif;
-	font-size: 20px;
+	font-size: 40px;
 	display: block;
 	position: relative;
 	float: left;
@@ -113,12 +115,27 @@ ol li {
 	/*border-bottom: 1px solid #111111;*/
 }
 
+/* trying button outline */
+
+.btn-outline {
+    background-color: transparent;
+    color: inherit;
+    transition: all .5s;
+}
+
+.btn-primary.btn-outline {
+    color: #428bca;
+}
+
+
+
+
+
+
+
+/*
 ol li input[type="radio"] {
 	display: none;
-
-
-	/*position: absolute;
-	visibility: hidden;*/
 }
 ol li input[type="radio"] + label span {
 	display: inline-block;
@@ -126,7 +143,7 @@ ol li input[type="radio"] + label span {
 	height: 25px;
 	margin-right: 7px;
 	background: url("unchecked.png"); 
-	/* source: https://learnopengl.com/img/advanced/blending_transparent_window.png */
+	
 	cursor: pointer;
 }
 ol li input[type="radio"]:checked + label span {
@@ -141,6 +158,11 @@ ol li label {
 	margin: 10px auto;
 	height: 50px;
 }
+*/
+
+
+
+
 /*
 ul li:hover label {
 	background: white;
