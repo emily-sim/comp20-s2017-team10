@@ -7,7 +7,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<!--CSS and Styles-->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<link rel="stylesheet" href="genre_css.css" type="text/css" />
+	<link rel="stylesheet" href="genre-style.css" type="text/css" />
+	<link rel="stylesheet" href="sidebar.css" type="text/css" />
 	<link href="https://fonts.googleapis.com/css?family=Monoton" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <!--JS and APIs-->
@@ -16,91 +17,118 @@
 </head>
 
 <body>
-	<!--Navigation Bar-->
-	<nav class="navbar navbar-inverse">
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-       				<span class="icon-bar"></span>
-        			<span class="icon-bar"></span>
-        			<span class="icon-bar"></span> 
-      			</button>
-				<a class="navbar-brand" href="#">MIXR</a>
-			</div>
-			<div class="collapse navbar-collapse" id="myNavbar">
-				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#"><span class="glyphicon glyphicon-list-alt"></span> Leaderboard</a></li>
-					<li><a href="#"><span class="glyphicon glyphicon-user"></span> Login</a></li>
-				</ul>
-			</div>
-		</div>
-	</nav>
 
-	<div class="container">
-		<div class="row">
-			<div class="col-md-4">
-				<img src="images/pop.jpg" class="img-rounded" alt="arianagrande" width="370" height="370">
-				<div class="overlay">
-				<h2> Pop </h2>
+	<div id="wrapper">
+		<!--Navigation Bar-->
+		<div id = "navbar-wrapper">
+			<nav class="navbar navbar-inverse">
+				<div class="container-fluid">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+		       				<span class="icon-bar"></span>
+		        			<span class="icon-bar"></span>
+		        			<span class="icon-bar"></span> 
+		      			</button>
+						<a class="navbar-brand" href="#">MIXR</a>
+					</div>
+					<div class="collapse navbar-collapse" id="myNavbar">
+						<ul class="nav navbar-nav navbar-right">
+							<li><a href="#"><span class="glyphicon glyphicon-list-alt"></span> Leaderboard</a></li>
+							<li><a id = "menu-toggle" href="#"><span class="glyphicon glyphicon-user"></span> Login</a></li>
+						</ul>
+					</div>
 				</div>
-			</div>
-			<div class="col-md-4">
-			<img src="images/hiphop.jpg" class="img-rounded" alt="frankocean" width="370" height="370">
-				<div class="overlay">
-				<h2> Hip hop </h2>
-				</div>
-			</div>		
-			<div class="col-md-4">
-			<img src="images/punkrock.jpg" class="img-rounded" alt="greenday" width="370" height="370">
-				<div class="overlay">
-				<h2> Punk Rock </h2>
-				</div>
-			</div>
+			</nav>
 		</div>
+		<!--End of Top Nav Bar-->
 
-		<div class="row">
-			<div class="col-md-4">
-			<img src="images/r&b.jpg" class="img-rounded" alt="aliciakeys" width="370" height="370">
-				<div class="overlay">
-				<h2> Rhythm and Blues </h2>
-				</div>
-			</div>
-			<div class="col-md-4">
-			<img src="images/electronics.jpg" class="img-rounded" alt="daftpunk" width="370" height="370">
-				<div class="overlay">
-				<h2> Electronic dance </h2>
-				</div>
-			</div>		
-			<div class="col-md-4">
-			<img src="images/country.jpg" class="img-rounded" alt="blake" width="370" height="370">
-				<div class="overlay">
-				<h2> Country </h2>
-				</div>
-			</div>
-		</div>
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                	<p> Welcome to Mixr! </p>
+                </li>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
 
-		<div class="row">
-			<div class="col-md-4">
-			<img src="images/latin.jpg" class="img-rounded" alt="jbalvin" width="370" height="370">
-				<div class="overlay">
-				<h2> Latin </h2>
+
+        <!-- Page Content -->
+		<div id="page-content-wrapper">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-4">
+						<img src="images/pop.jpg" class="img-rounded" alt="arianagrande" width="370" height="370">
+						<div class="overlay">
+						<h2> Pop </h2>
+						</div>
+					</div>
+					<div class="col-md-4">
+					<img src="images/hiphop.jpg" class="img-rounded" alt="frankocean" width="370" height="370">
+						<div class="overlay">
+						<h2> Hip hop </h2>
+						</div>
+					</div>		
+					<div class="col-md-4">
+					<img src="images/punkrock.jpg" class="img-rounded" alt="greenday" width="370" height="370">
+						<div class="overlay">
+						<h2> Punk Rock </h2>
+						</div>
+					</div>
 				</div>
-			</div>
-			<div class="col-md-4">
-			<img src="images/rock.jpg" class="img-rounded" alt="nirvana" width="370" height="370">
-				<div class="overlay">
-				<h2> Rock </h2>
+
+				<div class="row">
+					<div class="col-md-4">
+					<img src="images/r&b.jpg" class="img-rounded" alt="aliciakeys" width="370" height="370">
+						<div class="overlay">
+						<h2> Rhythm and Blues </h2>
+						</div>
+					</div>
+					<div class="col-md-4">
+					<img src="images/electronics.jpg" class="img-rounded" alt="daftpunk" width="370" height="370">
+						<div class="overlay">
+						<h2> Electronic dance </h2>
+						</div>
+					</div>		
+					<div class="col-md-4">
+					<img src="images/country.jpg" class="img-rounded" alt="blake" width="370" height="370">
+						<div class="overlay">
+						<h2> Country </h2>
+						</div>
+					</div>
 				</div>
-			</div>		
-			<div class="col-md-4">
-			<img src="images/indie.jpg" class="img-rounded" alt="dragons" width="370" height="370">
-				<div class="overlay">
-				<h2> Indie </h2>
+
+				<div class="row">
+					<div class="col-md-4">
+					<img src="images/latin.jpg" class="img-rounded" alt="jbalvin" width="370" height="370">
+						<div class="overlay">
+						<h2> Latin </h2>
+						</div>
+					</div>
+					<div class="col-md-4">
+					<img src="images/rock.jpg" class="img-rounded" alt="nirvana" width="370" height="370">
+						<div class="overlay">
+						<h2> Rock </h2>
+						</div>
+					</div>		
+					<div class="col-md-4">
+					<img src="images/indie.jpg" class="img-rounded" alt="dragons" width="370" height="370">
+						<div class="overlay">
+						<h2> Indie </h2>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
+		<!-- /#page-content-wrapper -->
 	</div>
 
+	<script>
+    	$("#menu-toggle").click(function(e) {
+        	e.preventDefault();
+        	$("#wrapper").toggleClass("toggled");
+    	});
+    </script>
 </body>
 
 </html>
