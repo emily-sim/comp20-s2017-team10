@@ -4,7 +4,7 @@ body {
 	background-color: black;
 }
 
-/* "Let's Play!" */
+/* Score */
 h1 {
 	font-family: 'Arvo', sans-serif;
 	font-size: 35px;
@@ -62,12 +62,13 @@ h2 {
 	font-size: 25px;
 	font-weight: bold;
 	color: #f2f2f2; 
+	text-align: middle;
 }
 
 .choices {
 	/*list-style-type: none;*/
 	margin-top: 70px;
-	margin-left: 15%;
+	margin-left: 25%;
 	color: white;
 }
 
@@ -87,56 +88,35 @@ ol li {
 	position: relative;
 	float: left;
 	width: 60%;
-	height: 50px;
-	/*border-bottom: 1px solid #111111;*/
+	height: 170px;
 }
 
 .btn-outline {
     background-color: transparent;
+    /*color: #ff4c4c;*/
     color: inherit;
     transition: all .5s;
 }
 
 .btn-primary.btn-outline {
     color: #428bca;
+    /*color: #ff4c4c;*/
 }
 
 .btn-primary:active, .btn-primary.active {
-    background: #007299;
     box-shadow: none;
+    /*color: #ff4c4c;*/
 }
 
-/*
-ol li input[type="radio"] {
-	display: none;
+.button-album-cover {
+	width: 70px;
+	height: auto;
 }
-ol li input[type="radio"] + label span {
-	display: inline-block;
-	width: 25px;
-	height: 25px;
-	margin-right: 7px;
-	background: url("unchecked.png"); 
-	
-	cursor: pointer;
-}
-ol li input[type="radio"]:checked + label span {
-	background: url("checked.png");
-} 
 
-ol li label {
-	display: block;
-	position: relative;
-	font-weight: 300;
-	padding: 25px 10px 10px 10px;
-	margin: 10px auto;
-	height: 50px;
-}
-*/
-
-.albumcover {
+.record-gif {
 	width: 20%;
 	height: auto;
 	position: absolute;
-	right: 25%;
-	top: 240px;
+	right: 40%;
+	top: 300px;
 }
