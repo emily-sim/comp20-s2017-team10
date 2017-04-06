@@ -14,14 +14,25 @@
 	<link href="https://fonts.googleapis.com/css?family=Arvo" rel="stylesheet">
 	<link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="sidebar.css" type="text/css" />
 	<link rel="stylesheet" href="game-style.css" />
 
 	<!--JavaScript, Bootstrap, APIs-->
 	<script type="text/javascript"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script src="node_modules/bootstrap"></script> 
 
 	<!--JavaScript-->
 	<script>	
+
+/*
+	function loadPlaylist(genre) {
+		/* if genre == pop, call proper spotify api =request url... 
+
+		function move();
+	}
+*/
 	function move() {
 			var elem = document.getElementById("bar");
 			var time = document.getElementById("time");
@@ -67,10 +78,12 @@
 
 </head>
 
-<body onload="move()">
 
+<body onload="move()">
+<!--<body onload="loadPlaylist(params.genre)">-->
 
 <!--Navigation Bar-->
+<div id="wrapper">
 	<nav class="navbar navbar-inverse">
 		<div class="container-fluid">
 			<div class="navbar-header">
@@ -90,50 +103,60 @@
 		</div>
 	</nav>
 
+<!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                	<p> Welcome to Mixr! </p>
+                </li>
+            </ul>
+        </div>
+<!-- /#sidebar-wrapper -->
 
-<h1 id="score-display">Score: 0</h1>
+	<h1 id="score-display">Score: 0</h1>
 
-<!--Timer-->
-<div class="timer-container">
-	<div id="time">30 s</div>
-	<div class="timer">
-		<div id="bar"></div> 
+	<!--Timer-->
+	<div class="timer-container">
+		<div id="time">30 s</div>
+		<div class="timer">
+			<div id="bar"></div> 
+		</div>
 	</div>
-</div>
 
 
 <!--Multiple Choice Options-->
-<ol class="choices">
-	
-		<h2>Can you guess the song?</h2>
+	<ol class="choices">
+		
+			<h2>Can you guess the song?</h2>
 
 
-		<div class="ui-grid-a">
-     		<div class="ui-block-a">
-				<li>
-				<button type="button" class="btn btn-primary btn-outline" data-toggle="button" aria-pressed="false" autocomplete="off" onclick="updateScore()"><img class="button-album-cover" src="album-cover.jpg"></button>
-				</li>
+			<div class="ui-grid-a">
+	     		<div class="ui-block-a">
+					<li>
+					<button type="button" class="btn btn-primary btn-outline" data-toggle="button" aria-pressed="false" autocomplete="off" onclick="updateScore()"><img class="button-album-cover" src="album-cover.jpg"></button>
+					</li>
 
-				<li>
-				<button type="button" class="btn btn-primary btn-outline" data-toggle="button" aria-pressed="false" autocomplete="off" onclick="updateScore()"><img class="button-album-cover" src="album-cover.jpg"></button>
-				</li>
-			</div>
+					<li>
+					<button type="button" class="btn btn-primary btn-outline" data-toggle="button" aria-pressed="false" autocomplete="off" onclick="updateScore()"><img class="button-album-cover" src="album-cover.jpg"></button>
+					</li>
+				</div>
 
-			<div class="ui-block-b">
-				<li>
-				<button type="button" class="btn btn-primary btn-outline" data-toggle="button" aria-pressed="false" autocomplete="off" onclick="updateScore()"><img class="button-album-cover" src="album-cover.jpg"></button>
-				</li>
+				<div class="ui-block-b">
+					<li>
+					<button type="button" class="btn btn-primary btn-outline" data-toggle="button" aria-pressed="false" autocomplete="off" onclick="updateScore()"><img class="button-album-cover" src="album-cover.jpg"></button>
+					</li>
 
-				<li>
-				<button type="button" class="btn btn-primary btn-outline" data-toggle="button" aria-pressed="false" autocomplete="off" onclick="updateScore()"><img class="button-album-cover" src="album-cover.jpg"></button>
-				</li>
-			</div>
-</ol>	
+					<li>
+					<button type="button" class="btn btn-primary btn-outline" data-toggle="button" aria-pressed="false" autocomplete="off" onclick="updateScore()"><img class="button-album-cover" src="album-cover.jpg"></button>
+					</li>
+				</div>
+	</ol>	
 
 
-<div >
-	<p><img class="record-gif" alt="spinning record player gif" src="spinning-record.gif" /></p>
-	<!-- source: https://thumbs.gfycat.com/AcidicJollyIrukandjijellyfish-size_restricted.gif -->
+	<div >
+		<p><img class="record-gif" alt="spinning record player gif" src="spinning-record.gif" /></p>
+		<!-- source: https://thumbs.gfycat.com/AcidicJollyIrukandjijellyfish-size_restricted.gif -->
+	</div>
 </div>
 
 

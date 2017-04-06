@@ -14,6 +14,32 @@
     <!--JS and APIs-->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+  	<script>
+
+    	function genQueryString(key, value) {
+    		var uri = "game.html";
+    		var re = new RegExp("([?&])" + key + "=.*?(&|$)", "i");
+    		var separator = uri.indexOf('?') !== -1 ? "&" : "?";
+    		if (uri.match(re)) {
+    			console.log(uri.replace(re, '$1' + key + "=" + value + '$2'));
+
+    			/* pass genre to some $.param  ? */
+
+    			location.href = uri.replace(re, '$1' + key + "=" + value + '$2');
+    			//return uri.replace(re, '$1' + key + "=" + value + '$2');
+    		} else {
+    			console.log(uri + separator + key + "=" + value);
+    			location.href = uri + separator + key + "=" + value;
+    			//return uri + separator + key + "=" + value;
+    		}
+    		
+    	}
+  	</script>
+
+
+
 </head>
 
 <body>
@@ -57,7 +83,7 @@
 		<div id="page-content-wrapper">
 			<div class="container">
 				<div class="row">
-					<div class="col-md-4">
+					<div class="col-md-4" onclick="genQueryString('genre', 'pop')">
 						<img src="images/pop.jpg" class="img-rounded" alt="arianagrande" width="370" height="370">
 						<!-- add a class that identifies the images that we want to be able to click onclick
 						add class="genre" -->
@@ -70,13 +96,13 @@
 						<h2> Pop </h2>
 						</div>
 					</div>
-					<div class="col-md-4">
+					<div class="col-md-4" onclick="genQueryString('genre', 'hiphop')">
 					<img src="images/hiphop.jpg" class="img-rounded" alt="frankocean" width="370" height="370">
 						<div class="overlay">
 						<h2> Hip hop </h2>
 						</div>
 					</div>		
-					<div class="col-md-4">
+					<div class="col-md-4" onclick="genQueryString('genre', 'punkrock')">
 					<img src="images/punkrock.jpg" class="img-rounded" alt="greenday" width="370" height="370">
 						<div class="overlay">
 						<h2> Punk Rock </h2>
@@ -85,19 +111,19 @@
 				</div>
 
 				<div class="row">
-					<div class="col-md-4">
+					<div class="col-md-4" onclick="genQueryString('genre', 'r&b')">
 					<img src="images/r&b.jpg" class="img-rounded" alt="aliciakeys" width="370" height="370">
 						<div class="overlay">
 						<h2> Rhythm and Blues </h2>
 						</div>
 					</div>
-					<div class="col-md-4">
+					<div class="col-md-4" onclick="genQueryString('genre', 'electronic')">
 					<img src="images/electronics.jpg" class="img-rounded" alt="daftpunk" width="370" height="370">
 						<div class="overlay">
 						<h2> Electronic dance </h2>
 						</div>
 					</div>		
-					<div class="col-md-4">
+					<div class="col-md-4" onclick="genQueryString('genre', 'country')">
 					<img src="images/country.jpg" class="img-rounded" alt="blake" width="370" height="370">
 						<div class="overlay">
 						<h2> Country </h2>
@@ -106,19 +132,19 @@
 				</div>
 
 				<div class="row">
-					<div class="col-md-4">
+					<div class="col-md-4" onclick="genQueryString('genre', 'latin')">
 					<img src="images/latin.jpg" class="img-rounded" alt="jbalvin" width="370" height="370">
 						<div class="overlay">
 						<h2> Latin </h2>
 						</div>
 					</div>
-					<div class="col-md-4">
+					<div class="col-md-4" onclick="genQueryString('genre', 'rock')">
 					<img src="images/rock.jpg" class="img-rounded" alt="nirvana" width="370" height="370">
 						<div class="overlay">
 						<h2> Rock </h2>
 						</div>
 					</div>		
-					<div class="col-md-4">
+					<div class="col-md-4" onclick="genQueryString('genre', 'indie')">
 					<img src="images/indie.jpg" class="img-rounded" alt="dragons" width="370" height="370">
 						<div class="overlay">
 						<h2> Indie </h2>
@@ -135,6 +161,8 @@
         	e.preventDefault();
         	$("#wrapper").toggleClass("toggled");
     	});
+
+
     </script>
 </body>
 
