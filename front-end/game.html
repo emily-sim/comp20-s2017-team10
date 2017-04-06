@@ -19,20 +19,48 @@
 
 	<!--JavaScript, Bootstrap, APIs-->
 	<script type="text/javascript"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-	<script src="node_modules/bootstrap"></script> 
 
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	
 	<!--JavaScript-->
 	<script>	
 
-/*
-	function loadPlaylist(genre) {
-		/* if genre == pop, call proper spotify api =request url... 
 
-		function move();
+	function loadPlaylist() {
+	
+		var queryString = window.location.search;
+		queryString = queryString.substring(1);
+
+
+		var genre = queryString.split('=');
+
+		console.log(genre[1]);
+
+		if (genre[1] === 'pop') {
+
+		} else if (genre[1] === 'hiphop') {
+
+		} else if (genre[1] === 'punkrock') {
+
+		} else if (genre[1] === 'r&b') {
+
+		} else if (genre[1] === 'electronic') {	
+
+		} else if (genre[1] === 'country') {
+
+		} else if (genre[1] === 'latin') {
+
+		} else if (genre[1] === 'rock') {	
+
+		} else if (genre[1] === 'indie') {
+
+		}	
+
+		/* call function to start timer */
+		move();
 	}
-*/
+
 	function move() {
 			var elem = document.getElementById("bar");
 			var time = document.getElementById("time");
@@ -79,8 +107,8 @@
 </head>
 
 
-<body onload="move()">
-<!--<body onload="loadPlaylist(params.genre)">-->
+
+<body onload="loadPlaylist()">
 
 <!--Navigation Bar-->
 <div id="wrapper">
