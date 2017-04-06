@@ -32,7 +32,6 @@
 		var queryString = window.location.search;
 		queryString = queryString.substring(1);
 
-
 		var genre = queryString.split('=');
 
 		console.log(genre[1]);
@@ -110,8 +109,8 @@
 
 <body onload="loadPlaylist()">
 
-<!--Navigation Bar-->
 <div id="wrapper">
+<!--Navigation Bar-->
 	<nav class="navbar navbar-inverse">
 		<div class="container-fluid">
 			<div class="navbar-header">
@@ -141,6 +140,8 @@
         </div>
 <!-- /#sidebar-wrapper -->
 
+<!-- Game Page Content -->
+
 	<h1 id="score-display">Score: 0</h1>
 
 	<!--Timer-->
@@ -152,7 +153,7 @@
 	</div>
 
 
-<!--Multiple Choice Options-->
+	<!--Multiple Choice Options-->
 	<ol class="choices">
 		
 			<h2>Can you guess the song?</h2>
@@ -161,30 +162,31 @@
 			<div class="ui-grid-a">
 	     		<div class="ui-block-a">
 					<li>
-					<button type="button" class="btn btn-primary btn-outline" data-toggle="button" aria-pressed="false" autocomplete="off" onclick="updateScore()"><img class="button-album-cover" src="album-cover.jpg"></button>
+					<button type="button" class="btn btn-primary btn-outline" data-toggle="button" aria-pressed="false" autocomplete="off" onclick="updateScore()"><img class="button-album-cover" src="images/album-cover.jpg"></button>
 					</li>
 
 					<li>
-					<button type="button" class="btn btn-primary btn-outline" data-toggle="button" aria-pressed="false" autocomplete="off" onclick="updateScore()"><img class="button-album-cover" src="album-cover.jpg"></button>
+					<button type="button" class="btn btn-primary btn-outline" data-toggle="button" aria-pressed="false" autocomplete="off" onclick="updateScore()"><img class="button-album-cover" src="images/album-cover.jpg"></button>
 					</li>
 				</div>
 
 				<div class="ui-block-b">
 					<li>
-					<button type="button" class="btn btn-primary btn-outline" data-toggle="button" aria-pressed="false" autocomplete="off" onclick="updateScore()"><img class="button-album-cover" src="album-cover.jpg"></button>
+					<button type="button" class="btn btn-primary btn-outline" data-toggle="button" aria-pressed="false" autocomplete="off" onclick="updateScore()"><img class="button-album-cover" src="images/album-cover.jpg"></button>
 					</li>
 
 					<li>
-					<button type="button" class="btn btn-primary btn-outline" data-toggle="button" aria-pressed="false" autocomplete="off" onclick="updateScore()"><img class="button-album-cover" src="album-cover.jpg"></button>
+					<button type="button" class="btn btn-primary btn-outline" data-toggle="button" aria-pressed="false" autocomplete="off" onclick="updateScore()"><img class="button-album-cover" src="images/album-cover.jpg"></button>
 					</li>
 				</div>
 	</ol>	
 
 
 	<div >
-		<p><img class="record-gif" alt="spinning record player gif" src="spinning-record.gif" /></p>
+		<p><img class="record-gif" alt="spinning record player gif" src="images/spinning-record.gif" /></p>
 		<!-- source: https://thumbs.gfycat.com/AcidicJollyIrukandjijellyfish-size_restricted.gif -->
 	</div>
+	
 </div>
 
 
