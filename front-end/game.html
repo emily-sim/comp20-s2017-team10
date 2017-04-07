@@ -25,7 +25,10 @@
 	
 	<!--JavaScript-->
 	<script>	
+	//var SpotifyWebApi = require('spotify-web-api-node');
 
+
+	function spotifyRequest
 
 	function loadPlaylist() {
 	
@@ -37,6 +40,19 @@
 		console.log(genre[1]);
 
 		if (genre[1] === 'pop') {
+
+			spotifyRequest("https://api.spotify.com/v1/search?q=genre%3Apop&type=track&market=US&limit=4");
+
+			var request = new XMLHttpRequest();
+			request.onreadystatechange = function() {
+				if (request.readyState == 4 && request.status == 200) {
+					var data = JSON.parse(request.responseText);
+					console.log(data);
+				}
+			}
+			request.open("GET", "https://api.spotify.com/v1/search?q=genre%3Apop&type=track&market=US&limit=4", true);
+			request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
+			request.send();
 
 		} else if (genre[1] === 'hiphop') {
 
@@ -186,7 +202,7 @@
 		<p><img class="record-gif" alt="spinning record player gif" src="images/spinning-record.gif" /></p>
 		<!-- source: https://thumbs.gfycat.com/AcidicJollyIrukandjijellyfish-size_restricted.gif -->
 	</div>
-	
+
 </div>
 
 
