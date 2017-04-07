@@ -43,7 +43,7 @@
 }
 
 #wrapper.toggled #page-content-wrapper {
-    position: relative;
+    position: absolute;
     margin-right: -250px;
 }
 
