@@ -2,6 +2,13 @@
     overflow-x: hidden;
  }
 
+#profile {
+    width: 50%;
+    border-radius: 50%;
+    display: block;
+    margin: 0 auto;
+}
+
 /* Toggle Styles */
 
 #wrapper {
@@ -20,11 +27,13 @@
     z-index: 1000;
     position: fixed;
     right: 0;
+    
     width: 0;
     height: 100%;
-    margin-right: -250px;
+    margin-left: -250px;
     overflow-y: auto;
-    background: #000;
+    background: black;
+
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
@@ -32,7 +41,7 @@
 }
 
 #wrapper.toggled #sidebar-wrapper {
-    width: 250px;
+    width: 0;
 }
 
 #page-content-wrapper {
@@ -59,8 +68,10 @@
 }
 
 .sidebar-nav li {
-    text-indent: 20px;
-    line-height: 40px;
+    text-align: center;
+    font-size: medium;
+    color: lightgrey;
+    line-height: 50px;
 }
 
 .sidebar-nav > .sidebar-brand {
