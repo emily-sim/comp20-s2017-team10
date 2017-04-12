@@ -41,6 +41,17 @@
     opacity: 0.75;
 }
 
+.page-title {
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+h1 {
+    color: gainsboro;
+    font-family: "Snell Roundhand", cursive;
+    font-size: 70px;
+}
+
 h2 {
 	color: white;
     font-size: 35px;
