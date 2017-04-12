@@ -26,4 +26,5 @@ Members: Emily Sim, Sophia Wang, Maddie Payne, Ian Mao, Jose Lemus
 - Be done with the user sidebar - both the back and front end
 - Fix the responsive design on genre.html so that the 3x3 grid becomes smaller. 
 
-
+#Comments by Ming
+* Please don't get hung up with UI and Bootstrap issues.
