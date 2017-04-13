@@ -29,14 +29,33 @@
 			</div>
 			<div class="collapse navbar-collapse" id="myNavbar">
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#"><span class="glyphicon glyphicon-list-alt"></span> Leaderboard</a></li>
-					<li><a href="#"><span class="glyphicon glyphicon-user"></span> Login</a></li>
+					<li>
+						<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".leaderboardModal">Leaderboard</button>
+
+						<div class="modal fade leaderboardModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+ 							<div class="modal-dialog modal-lg">
+    							<div class="modal-content">
+    								<div class="modal-header">
+          								<button type="button" class="close" data-dismiss="modal">&times;</button>
+          								<h2 class="modal-title">Leaderboard</h2>
+        							</div>
+    								<div class="modal-body">
+     									<h4>This is the legit leaderboard</h4>
+     								</div>
+     							</div>
+     						</div>
+     					</div>
+					</li>
+
+					<li>
+						<a href="#"><span class="glyphicon glyphicon-user"></span> Login</a>
+					</li>
 				</ul>
 			</div>
 		</div>
 	</nav>
 
-	<img src="images/home-background.gif" alt="albumcovercollage" id="bg-image"></img>
+	<img class="blur" src="images/home-background.gif" alt="albumcovercollage" id="bg-image"></img>
 
 	<div id="container">
 		<div class="intro-text">Discover fresh new tunes.</div>
