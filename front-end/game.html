@@ -29,16 +29,19 @@
 
 
 	function spotifyRequest(url) {
+
 		var request = new XMLHttpRequest();
-			request.onreadystatechange = function() {
-				if (request.readyState == 4 && request.status == 200) {
-					var data = JSON.parse(request.responseText);
-					console.log(data);
-				}
+		request.open("GET", url, true);
+		request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+		request.send();
+		request.onreadystatechange = function() {
+			if (request.readyState === 4 && request.status === 200) {
+				var data = JSON.parse(request.responseText);
+				/* parse all json there */
+				console.log("from spotify request: " +  data);
+				return data;
 			}
-			request.open("GET", url, true);
-			request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
-			request.send();
+		}
 	}
 
 	function loadPlaylist() {
@@ -48,45 +51,50 @@
 
 		var genre = queryString.split('=');
 
-		console.log(genre[1]);
+		console.log("GENRE: " + genre[1]);
 
 		if (genre[1] === 'pop') {
 
-			spotifyRequest("https://api.spotify.com/v1/search?q=genre%3Apop&type=track&market=US&limit=4");
+			var tracks = spotifyRequest("https://api.spotify.com/v1/search?q=genre%3Apop&type=track&market=US&limit=4");
 
 			
 
 		} else if (genre[1] === 'hiphop') {
 
-			spotifyRequest("https://api.spotify.com/v1/search?q=genre%3Ahip-hop&type=track&market=US&limit=4");
+			var tracks = spotifyRequest("https://api.spotify.com/v1/search?q=genre%3Ahip-hop&type=track&market=US&limit=4");
 
 		} else if (genre[1] === 'punkrock') {
 
-			spotifyRequest("https://api.spotify.com/v1/search?q=genre%3Apunk&type=track&market=US&limit=4");
+			var tracks = spotifyRequest("https://api.spotify.com/v1/search?q=genre%3Apunk&type=track&market=US&limit=4");
+
+			console.log("in load playlist" +tracks);
+
+			var tracksJSON = JSON.parse(tracks);
+			//tracks.JSON.
 
 		} else if (genre[1] === 'r&b') {
 
-			spotifyRequest("https://api.spotify.com/v1/search?q=genre%3AR%26B&type=track&market=US&limit=4");
+			var tracks = spotifyRequest("https://api.spotify.com/v1/search?q=genre%3AR%26B&type=track&market=US&limit=4");
 
 		} else if (genre[1] === 'electronic') {	
 
-			spotifyRequest("https://api.spotify.com/v1/search?q=genre%3Aelectronic&type=track&market=US&limit=4");
+			var tracks = spotifyRequest("https://api.spotify.com/v1/search?q=genre%3Aelectronic&type=track&market=US&limit=4");
 
 		} else if (genre[1] === 'country') {
 
-			spotifyRequest("https://api.spotify.com/v1/search?q=genre%3Acountry&type=track&market=US&limit=4");
+			var tracks = spotifyRequest("https://api.spotify.com/v1/search?q=genre%3Acountry&type=track&market=US&limit=4");
 
 		} else if (genre[1] === 'latin') {
 
-			spotifyRequest("https://api.spotify.com/v1/search?q=genre%3Alatin&type=track&market=US&limit=4");
+			var tracks = spotifyRequest("https://api.spotify.com/v1/search?q=genre%3Alatin&type=track&market=US&limit=4");
 
 		} else if (genre[1] === 'rock') {	
 
-			spotifyRequest("https://api.spotify.com/v1/search?q=genre%3Arock&type=track&market=US&limit=4");
+			var tracks = spotifyRequest("https://api.spotify.com/v1/search?q=genre%3Arock&type=track&market=US&limit=4");
 
 		} else if (genre[1] === 'indie') {
 
-			spotifyRequest("https://api.spotify.com/v1/search?q=genre%3Aindiepop&type=track&market=US&limit=4");
+			var tracks = spotifyRequest("https://api.spotify.com/v1/search?q=genre%3Aindiepop&type=track&market=US&limit=4");
 
 		}	
 
@@ -95,6 +103,11 @@
 	}
 
 	function move() {
+
+
+
+			console.log("in move");
+
 			var elem = document.getElementById("bar");
 			var time = document.getElementById("time");
 			var width = 0;
