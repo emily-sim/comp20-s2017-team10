@@ -1,243 +1,228 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	
-	<title>MIXR</title>
-	
-	<!--CSS and Style-->
-	<link href="https://fonts.googleapis.com/css?family=Monoton" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Arvo" rel="stylesheet">
-	<link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<link rel="stylesheet" href="sidebar.css" type="text/css" />
-	<link rel="stylesheet" href="game-style.css" />
-
-	<!--JavaScript, Bootstrap, APIs-->
-	<script type="text/javascript"></script>
-
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	
-	<!--JavaScript-->
-	<script>	
-	//var SpotifyWebApi = require('spotify-web-api-node');
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MIXR</title>
+    <!--CSS and Style-->
+    <link href="https://fonts.googleapis.com/css?family=Monoton" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Arvo" rel="stylesheet">
+    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="sidebar.css" type="text/css" />
+    <link rel="stylesheet" href="game-style.css" />
+    <link rel="stylesheet" href="sidebar.css" type="text/css" />
+    <!--JavaScript, Bootstrap, APIs-->
+    <script type="text/javascript"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!--JavaScript-->
+    <script>
+    //var SpotifyWebApi = require('spotify-web-api-node');
 
 
-	function spotifyRequest(url) {
+    function spotifyRequest(url) {
 
-		var request = new XMLHttpRequest();
-		request.open("GET", url, true);
-		request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-		request.send();
-		request.onreadystatechange = function() {
-			if (request.readyState === 4 && request.status === 200) {
-				var data = JSON.parse(request.responseText);
-				/* parse all json there */
-				console.log("from spotify request: " +  data);
-				return data;
-			}
-		}
-	}
+        var request = new XMLHttpRequest();
+        request.open("GET", url, true);
+        request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        request.send();
+        request.onreadystatechange = function() {
+            if (request.readyState === 4 && request.status === 200) {
+                var data = JSON.parse(request.responseText);
+                /* parse all json there */
+                console.log("from spotify request: " + data);
+                return data;
+            }
+        }
+    }
 
-	function loadPlaylist() {
-	
-		var queryString = window.location.search;
-		queryString = queryString.substring(1);
+    function loadPlaylist() {
 
-		var genre = queryString.split('=');
+        var queryString = window.location.search;
+        queryString = queryString.substring(1);
 
-		console.log("GENRE: " + genre[1]);
+        var genre = queryString.split('=');
 
-		if (genre[1] === 'pop') {
+        console.log("GENRE: " + genre[1]);
 
-			var tracks = spotifyRequest("https://api.spotify.com/v1/search?q=genre%3Apop&type=track&market=US&limit=4");
+        if (genre[1] === 'pop') {
 
-			
-
-		} else if (genre[1] === 'hiphop') {
-
-			var tracks = spotifyRequest("https://api.spotify.com/v1/search?q=genre%3Ahip-hop&type=track&market=US&limit=4");
-
-		} else if (genre[1] === 'punkrock') {
-
-			var tracks = spotifyRequest("https://api.spotify.com/v1/search?q=genre%3Apunk&type=track&market=US&limit=4");
-
-			console.log("in load playlist" +tracks);
-
-			var tracksJSON = JSON.parse(tracks);
-			//tracks.JSON.
-
-		} else if (genre[1] === 'r&b') {
-
-			var tracks = spotifyRequest("https://api.spotify.com/v1/search?q=genre%3AR%26B&type=track&market=US&limit=4");
-
-		} else if (genre[1] === 'electronic') {	
-
-			var tracks = spotifyRequest("https://api.spotify.com/v1/search?q=genre%3Aelectronic&type=track&market=US&limit=4");
-
-		} else if (genre[1] === 'country') {
-
-			var tracks = spotifyRequest("https://api.spotify.com/v1/search?q=genre%3Acountry&type=track&market=US&limit=4");
-
-		} else if (genre[1] === 'latin') {
-
-			var tracks = spotifyRequest("https://api.spotify.com/v1/search?q=genre%3Alatin&type=track&market=US&limit=4");
-
-		} else if (genre[1] === 'rock') {	
-
-			var tracks = spotifyRequest("https://api.spotify.com/v1/search?q=genre%3Arock&type=track&market=US&limit=4");
-
-		} else if (genre[1] === 'indie') {
-
-			var tracks = spotifyRequest("https://api.spotify.com/v1/search?q=genre%3Aindiepop&type=track&market=US&limit=4");
-
-		}	
-
-		/* call function to start timer */
-		move();
-	}
-
-	function move() {
+            var tracks = spotifyRequest("https://api.spotify.com/v1/search?q=genre%3Apop&type=track&market=US&limit=4");
 
 
 
-			console.log("in move");
+        } else if (genre[1] === 'hiphop') {
 
-			var elem = document.getElementById("bar");
-			var time = document.getElementById("time");
-			var width = 0;
-			var id = setInterval(frame, 300);
-			function frame() {
-					if (width >= 100) {
-						time.innerHTML = "Time's up!";
-						//function move();
+            var tracks = spotifyRequest("https://api.spotify.com/v1/search?q=genre%3Ahip-hop&type=track&market=US&limit=4");
 
-						clearInterval(id);
-						
-					} else {
-						width++;
-						elem.style.width = width + '%';
-						if (width % 3 == 0){
-							/****this is counting too fast*******/
-							time.innerHTML = (30 - width/3) + ' s';
-						}
-					
-							/* when width == 100 restart timer, start playing next song clip, reset multiple choice buttons */
-							/* can you just call the move func again does it do weird returns like recursion */
-						
-					}
-			}
-	}
+        } else if (genre[1] === 'punkrock') {
+
+            var tracks = spotifyRequest("https://api.spotify.com/v1/search?q=genre%3Apunk&type=track&market=US&limit=4");
+
+            console.log("in load playlist" + tracks);
+
+            var tracksJSON = JSON.parse(tracks);
+            //tracks.JSON.
+
+        } else if (genre[1] === 'r&b') {
+
+            var tracks = spotifyRequest("https://api.spotify.com/v1/search?q=genre%3AR%26B&type=track&market=US&limit=4");
+
+        } else if (genre[1] === 'electronic') {
+
+            var tracks = spotifyRequest("https://api.spotify.com/v1/search?q=genre%3Aelectronic&type=track&market=US&limit=4");
+
+        } else if (genre[1] === 'country') {
+
+            var tracks = spotifyRequest("https://api.spotify.com/v1/search?q=genre%3Acountry&type=track&market=US&limit=4");
+
+        } else if (genre[1] === 'latin') {
+
+            var tracks = spotifyRequest("https://api.spotify.com/v1/search?q=genre%3Alatin&type=track&market=US&limit=4");
+
+        } else if (genre[1] === 'rock') {
+
+            var tracks = spotifyRequest("https://api.spotify.com/v1/search?q=genre%3Arock&type=track&market=US&limit=4");
+
+        } else if (genre[1] === 'indie') {
+
+            var tracks = spotifyRequest("https://api.spotify.com/v1/search?q=genre%3Aindiepop&type=track&market=US&limit=4");
+
+        }
+
+        /* call function to start timer */
+        move();
+    }
+
+    function move() {
+        console.log("in move");
+
+        var elem = document.getElementById("bar");
+        var time = document.getElementById("time");
+        var width = 0;
+        var id = setInterval(frame, 300);
+
+        function frame() {
+            if (width >= 100) {
+                time.innerHTML = "Time's up!";
+                //function move();
+
+                clearInterval(id);
+
+            } else {
+                width++;
+                elem.style.width = width + '%';
+                if (width % 3 == 0) {
+                    /****this is counting too fast*******/
+                    time.innerHTML = (30 - width / 3) + ' s';
+                }
+
+                /* when width == 100 restart timer, start playing next song clip, reset multiple choice buttons */
+                /* can you just call the move func again does it do weird returns like recursion */
+
+            }
+        }
+    }
 
 
-	var score = 0;
-	function updateScore() {
-		var scoreDisplay = document.getElementById("score-display");
+    var score = 0;
 
-		/************************************/
-		/* check if answer is correct first */
-		/* if correct -- a "correct!" message?, add to score, stop timer, go to next song which resets timer and buttons */ 
+    function updateScore() {
+        var scoreDisplay = document.getElementById("score-display");
 
-		/* add 1 to score, maybe more if got it with less time? */
-		score += 1;
-		scoreDisplay.innerHTML = "Score: " + score;	
-	};
-	
-	</script>
+        /************************************/
+        /* check if answer is correct first */
+        /* if correct -- a "correct!" message?, add to score, stop timer, go to next song which resets timer and buttons */
 
+        /* add 1 to score, maybe more if got it with less time? */
+        score += 1;
+        scoreDisplay.innerHTML = "Score: " + score;
+    };
+    </script>
 </head>
 
-
-
 <body onload="loadPlaylist()">
-
-<div id="wrapper">
-<!--Navigation Bar-->
-	<nav class="navbar navbar-inverse">
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-       				<span class="icon-bar"></span>
-        			<span class="icon-bar"></span>
-        			<span class="icon-bar"></span> 
-      			</button>
-				<a class="navbar-brand" href="#">MIXR</a>
-			</div>
-			<div class="collapse navbar-collapse" id="myNavbar">
-				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#"><span class="glyphicon glyphicon-list-alt"></span>Leaderboard</a></li>
-					<li><a href="#"><span class="glyphicon glyphicon-user"></span>Login</a></li>
-				</ul>
-			</div>
-		</div>
-	</nav>
-
-<!-- Sidebar -->
+    <div id="navbar-wrapper">
+        <!--Navigation Bar-->
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">MIXR</a>
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#"><span class="glyphicon glyphicon-list-alt"></span>Leaderboard</a></li>
+                        <li><a href="#"><span class="glyphicon glyphicon-user"></span>Login</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <!-- Sidebar -->
+    <div id="wrapper">
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
-                	<p> Welcome to Mixr! </p>
+                    <li>
+                        <img id="profile" src="images/pop.jpg" class="img-responsive" width="70" height="70">
+                    </li>
+                    <li>
+                        <p> My name </p>
+                    </li>
+                    <li>
+                        <p> My score </p>
+                    </li>
                 </li>
             </ul>
         </div>
-<!-- /#sidebar-wrapper -->
-
-<!-- Game Page Content -->
-
-	<h1 id="score-display">Score: 0</h1>
-
-	<!--Timer-->
-	<div class="timer-container">
-		<div id="time">30 s</div>
-		<div class="timer">
-			<div id="bar"></div> 
-		</div>
-	</div>
-
-
-	<!--Multiple Choice Options-->
-	<ol class="choices">
-		
-			<h2>Can you guess the song?</h2>
-
-
-			<div class="ui-grid-a">
-	     		<div class="ui-block-a">
-					<li>
-					<button type="button" class="btn btn-primary btn-outline" data-toggle="button" aria-pressed="false" autocomplete="off" onclick="updateScore()"><img class="button-album-cover" src="images/album-cover.jpg"></button>
-					</li>
-
-					<li>
-					<button type="button" class="btn btn-primary btn-outline" data-toggle="button" aria-pressed="false" autocomplete="off" onclick="updateScore()"><img class="button-album-cover" src="images/album-cover.jpg"></button>
-					</li>
-				</div>
-
-				<div class="ui-block-b">
-					<li>
-					<button type="button" class="btn btn-primary btn-outline" data-toggle="button" aria-pressed="false" autocomplete="off" onclick="updateScore()"><img class="button-album-cover" src="images/album-cover.jpg"></button>
-					</li>
-
-					<li>
-					<button type="button" class="btn btn-primary btn-outline" data-toggle="button" aria-pressed="false" autocomplete="off" onclick="updateScore()"><img class="button-album-cover" src="images/album-cover.jpg"></button>
-					</li>
-				</div>
-	</ol>	
-
-
-	<div >
-		<p><img class="record-gif" alt="spinning record player gif" src="images/spinning-record.gif" /></p>
-		<!-- source: https://thumbs.gfycat.com/AcidicJollyIrukandjijellyfish-size_restricted.gif -->
-	</div>
-
-</div>
-
-
-
+        <!-- /#sidebar-wrapper -->
+        <!-- Game Page Content -->
+        <h1 id="score-display">Score: 0</h1>
+        <!--Timer-->
+        <div class="timer-container">
+            <div id="time">30 s</div>
+            <div class="timer">
+                <div id="bar"></div>
+            </div>
+        </div>
+        <!--Multiple Choice Options-->
+        <ol class="choices">
+            <h2>Can you guess the song?</h2>
+            <div class="ui-grid-a">
+                <div class="ui-block-a">
+                    <li>
+                        <button type="button" class="btn btn-primary btn-outline" data-toggle="button" aria-pressed="false" autocomplete="off" onclick="updateScore()"><img class="button-album-cover" src="images/album-cover.jpg"></button>
+                    </li>
+                    <li>
+                        <button type="button" class="btn btn-primary btn-outline" data-toggle="button" aria-pressed="false" autocomplete="off" onclick="updateScore()"><img class="button-album-cover" src="images/album-cover.jpg"></button>
+                    </li>
+                </div>
+            </div>
+            <div class="ui-block-b">
+                <li>
+                    <button type="button" class="btn btn-primary btn-outline" data-toggle="button" aria-pressed="false" autocomplete="off" onclick="updateScore()"><img class="button-album-cover" src="images/album-cover.jpg"></button>
+                </li>
+                <li>
+                    <button type="button" class="btn btn-primary btn-outline" data-toggle="button" aria-pressed="false" autocomplete="off" onclick="updateScore()"><img class="button-album-cover" src="images/album-cover.jpg"></button>
+                </li>
+            </div>
+        </ol>
+        <div class="record">
+            <p><img class="record-gif" alt="spinning record player gif" src="images/spinning-record.gif" /></p>
+            <!-- source: https://thumbs.gfycat.com/AcidicJollyIrukandjijellyfish-size_restricted.gif -->
+        </div>
+    </div>
+    <!-- </div> -->
 </body>
 
 </html>
