@@ -33,7 +33,7 @@
    
     .modal-dialog {
             top: 20%;
-            width: 75%;
+            width: 60%;
             position: center;
             /*margin: 100px;*/
         }
@@ -43,13 +43,13 @@
                 top: 40%;
             }
             .modal-header {
-                    background-color: black;
-                    color: lightgrey;
+                    background-color: snow;
+                    color: grey;
                     text-align: center;
             }
             .modal-body {
-                    background-color: black;
-                    color: lightgrey;
+                    background-color: snow;
+                    color: grey;
                     text-align: center;
                 }
 
