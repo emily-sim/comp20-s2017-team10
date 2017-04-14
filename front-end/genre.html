@@ -2,176 +2,163 @@
 <html>
 
 <head>
-	<title>MIXR</title>
-	<meta charset="utf-8" /> 
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<!--CSS and Styles-->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<link rel="stylesheet" href="genre-style.css" type="text/css" />
-	<link rel="stylesheet" href="sidebar.css" type="text/css" />
-	<link href="https://fonts.googleapis.com/css?family=Monoton" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <title>MIXR</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!--CSS and Styles-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="genre-style.css" type="text/css" />
+    <link rel="stylesheet" href="sidebar.css" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Monoton" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <!--JS and APIs-->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script>
+    function genQueryString(key, value) {
+        var uri = "game.html";
+        var re = new RegExp("([?&])" + key + "=.*?(&|$)", "i");
+        var separator = uri.indexOf('?') !== -1 ? "&" : "?";
+        if (uri.match(re)) {
+            console.log(uri.replace(re, '$1' + key + "=" + value + '$2'));
 
+            /* pass genre to some $.param  ? */
 
-  	<script>
+            location.href = uri.replace(re, '$1' + key + "=" + value + '$2');
+            //return uri.replace(re, '$1' + key + "=" + value + '$2');
+        } else {
+            console.log(uri + separator + key + "=" + value);
+            location.href = uri + separator + key + "=" + value;
+            //return uri + separator + key + "=" + value;
+        }
 
-    	function genQueryString(key, value) {
-    		var uri = "game.html";
-    		var re = new RegExp("([?&])" + key + "=.*?(&|$)", "i");
-    		var separator = uri.indexOf('?') !== -1 ? "&" : "?";
-    		if (uri.match(re)) {
-    			console.log(uri.replace(re, '$1' + key + "=" + value + '$2'));
-
-    			/* pass genre to some $.param  ? */
-
-    			location.href = uri.replace(re, '$1' + key + "=" + value + '$2');
-    			//return uri.replace(re, '$1' + key + "=" + value + '$2');
-    		} else {
-    			console.log(uri + separator + key + "=" + value);
-    			location.href = uri + separator + key + "=" + value;
-    			//return uri + separator + key + "=" + value;
-    		}
-    		
-    	}
-  	</script>
-
-
-
+    }
+    </script>
 </head>
 
 <body>
-	<!--Navigation Bar-->
-	<div id = "navbar-wrapper">
-		<nav class="navbar navbar-inverse">
-			<div class="container-fluid">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-	       				<span class="icon-bar"></span>
-	        			<span class="icon-bar"></span>
-	        			<span class="icon-bar"></span> 
-	      			</button>
-					<a class="navbar-brand" href="#">MIXR</a>
-				</div>
-				<div class="collapse navbar-collapse" id="myNavbar">
-					<ul class="nav navbar-nav navbar-right">
-						<li><a href="#"><span class="glyphicon glyphicon-list-alt"></span> Leaderboard</a></li>
-						<li><a id = "menu-toggle" href="#"><span class="glyphicon glyphicon-user"></span> Login</a></li>
-					</ul>
-				</div>
-			</div>
-		</nav>
-	</div>
-	<!--End of Top Nav Bar-->
-	<div id="wrapper">
+    <!--Navigation Bar-->
+    <div id="navbar-wrapper">
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">MIXR</a>
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#"><span class="glyphicon glyphicon-list-alt"></span> Leaderboard</a></li>
+                        <li><a id="menu-toggle" href="#"><span class="glyphicon glyphicon-user"></span> Login</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <!--End of Top Nav Bar-->
+    <div id="wrapper">
         <!-- Sidebar -->
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
-            	<li class="sidebar-brand">
-            		<li>
-						<img id="profile" src="images/pop.jpg" class="img-responsive" width="70" height="70">
-            		</li>
-            		<li>
-            			<p> My name </p>
-            		</li>
-            		<li>
-            			<p> My score </p>
-            		</li>
-            	</li>
+                <li class="sidebar-brand">
+                    <li>
+                        <img id="profile" src="images/pop.jpg" class="img-responsive" width="70" height="70">
+                    </li>
+                    <li>
+                        <p> My name </p>
+                    </li>
+                    <li>
+                        <p> My score </p>
+                    </li>
+                </li>
             </ul>
         </div>
         <!-- /#sidebar-wrapper -->
-
-
         <!-- Page Content -->
-		<div id="page-content-wrapper">
-			<div class="container">
-				<div class="page-title">
-					<h1> Choose Your Genre </h1>
-				</div>
-				<div class="row">
-					<div class="col-md-4" onclick="genQueryString('genre', 'pop')">
-						<img src="images/pop.jpg" class="img-responsive" alt="arianagrande" width="370" height="370">
-						<!-- add a class that identifies the images that we want to be able to click onclick
-						add class="genre" -->
-						<!-- on click you open game, then pass the arguments (genre == ?) In game
-						it shows what url was passed as an argument then you make the request 
-						Pass the query part of the location object to a jquery method call $.param
-						pass location.query. this turns the parameters into an object. you can access
-						params.genre -->
-						<div class="overlay">
-						<h2> Pop </h2>
-						</div>
-					</div>
-					<div class="col-md-4" onclick="genQueryString('genre', 'hiphop')">
-					<img src="images/hiphop.jpg" class="img-responsive" alt="frankocean" width="370" height="370">
-						<div class="overlay">
-						<h2> Hip hop </h2>
-						</div>
-					</div>		
-					<div class="col-md-4" onclick="genQueryString('genre', 'punkrock')">
-					<img src="images/punkrock.jpg" class="img-responsive" alt="greenday" width="370" height="370">
-						<div class="overlay">
-						<h2> Punk Rock </h2>
-						</div>
-					</div>
-				</div>
-
-				<div class="row">
-					<div class="col-md-4" onclick="genQueryString('genre', 'r&b')">
-					<img src="images/r&b.jpg" class="img-responsive" alt="aliciakeys" width="370" height="370">
-						<div class="overlay">
-						<h2> Rhythm and Blues </h2>
-						</div>
-					</div>
-					<div class="col-md-4" onclick="genQueryString('genre', 'electronic')">
-					<img src="images/electronics.jpg" class="img-responsive" alt="daftpunk" width="370" height="370">
-						<div class="overlay">
-						<h2> Electronic dance </h2>
-						</div>
-					</div>		
-					<div class="col-md-4" onclick="genQueryString('genre', 'country')">
-					<img src="images/country.jpg" class="img-responsive" alt="blake" width="370" height="370">
-						<div class="overlay">
-						<h2> Country </h2>
-						</div>
-					</div>
-				</div>
-
-				<div class="row">
-					<div class="col-md-4" onclick="genQueryString('genre', 'latin')">
-					<img src="images/latin.jpg" class="img-responsive" alt="jbalvin" width="370" height="370">
-						<div class="overlay">
-						<h2> Latin </h2>
-						</div>
-					</div>
-					<div class="col-md-4" onclick="genQueryString('genre', 'rock')">
-					<img src="images/rock.jpg" class="img-responsive" alt="nirvana" width="370" height="370">
-						<div class="overlay">
-						<h2> Rock </h2>
-						</div>
-					</div>		
-					<div class="col-md-4" onclick="genQueryString('genre', 'indie')">
-					<img src="images/indie.jpg" class="img-responsive" alt="dragons" width="370" height="370">
-						<div class="overlay">
-						<h2> Indie </h2>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- /#page-content-wrapper -->
-	</div>
-
-	<script>
-    	$("#menu-toggle").click(function(e) {
-        	e.preventDefault();
-        	$("#wrapper").toggleClass("toggled");
-    	});
-
-
+        <div id="page-content-wrapper">
+            <div class="container">
+                <div class="page-title">
+                    <h1> Choose Your Genre </h1>
+                </div>
+                <div class="row">
+                    <div class="col-md-4" onclick="genQueryString('genre', 'pop')">
+                        <img src="images/pop.jpg" class="img-responsive" alt="arianagrande" width="370" height="370">
+                        <!-- add a class that identifies the images that we want to be able to click onclick
+                        add class="genre" -->
+                        <!-- on click you open game, then pass the arguments (genre == ?) In game
+                        it shows what url was passed as an argument then you make the request 
+                        Pass the query part of the location object to a jquery method call $.param
+                        pass location.query. this turns the parameters into an object. you can access
+                        params.genre -->
+                        <div class="overlay">
+                            <h2> Pop </h2>
+                        </div>
+                    </div>
+                    <div class="col-md-4" onclick="genQueryString('genre', 'hiphop')">
+                        <img src="images/hiphop.jpg" class="img-responsive" alt="frankocean" width="370" height="370">
+                        <div class="overlay">
+                            <h2> Hip hop </h2>
+                        </div>
+                    </div>
+                    <div class="col-md-4" onclick="genQueryString('genre', 'punkrock')">
+                        <img src="images/punkrock.jpg" class="img-responsive" alt="greenday" width="370" height="370">
+                        <div class="overlay">
+                            <h2> Punk Rock </h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4" onclick="genQueryString('genre', 'r&b')">
+                        <img src="images/r&b.jpg" class="img-responsive" alt="aliciakeys" width="370" height="370">
+                        <div class="overlay">
+                            <h2> Rhythm and Blues </h2>
+                        </div>
+                    </div>
+                    <div class="col-md-4" onclick="genQueryString('genre', 'electronic')">
+                        <img src="images/electronics.jpg" class="img-responsive" alt="daftpunk" width="370" height="370">
+                        <div class="overlay">
+                            <h2> Electronic dance </h2>
+                        </div>
+                    </div>
+                    <div class="col-md-4" onclick="genQueryString('genre', 'country')">
+                        <img src="images/country.jpg" class="img-responsive" alt="blake" width="370" height="370">
+                        <div class="overlay">
+                            <h2> Country </h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4" onclick="genQueryString('genre', 'latin')">
+                        <img src="images/latin.jpg" class="img-responsive" alt="jbalvin" width="370" height="370">
+                        <div class="overlay">
+                            <h2> Latin </h2>
+                        </div>
+                    </div>
+                    <div class="col-md-4" onclick="genQueryString('genre', 'rock')">
+                        <img src="images/rock.jpg" class="img-responsive" alt="nirvana" width="370" height="370">
+                        <div class="overlay">
+                            <h2> Rock </h2>
+                        </div>
+                    </div>
+                    <div class="col-md-4" onclick="genQueryString('genre', 'indie')">
+                        <img src="images/indie.jpg" class="img-responsive" alt="dragons" width="370" height="370">
+                        <div class="overlay">
+                            <h2> Indie </h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+    </div>
+    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
     </script>
 </body>
 

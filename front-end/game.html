@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="sidebar.css" type="text/css" />
     <link rel="stylesheet" href="game-style.css" />
-    <link rel="stylesheet" href="sidebar.css" type="text/css" />
+    <!-- <link rel="stylesheet" href="sidebar.css" type="text/css" /> -->
     <!--JavaScript, Bootstrap, APIs-->
     <script type="text/javascript"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -162,14 +162,15 @@
                 <div class="collapse navbar-collapse" id="myNavbar">
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="#"><span class="glyphicon glyphicon-list-alt"></span>Leaderboard</a></li>
-                        <li><a href="#"><span class="glyphicon glyphicon-user"></span>Login</a></li>
+                        <li><a id="menu-toggle" href="#"><span class="glyphicon glyphicon-user"></span>Login</a></li>
                     </ul>
                 </div>
             </div>
         </nav>
     </div>
-    <!-- Sidebar -->
+    <!-- End of Top Nav Bar -->
     <div id="wrapper">
+        <!-- Sidebar -->
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
@@ -187,19 +188,29 @@
         </div>
         <!-- /#sidebar-wrapper -->
         <!-- Game Page Content -->
-        <h1 id="score-display">Score: 0</h1>
-        <!--Timer-->
-        <div class="timer-container">
-            <div id="time">30 s</div>
-            <div class="timer">
-                <div id="bar"></div>
+        <div id="page-content-wrapper">
+            <h1 id="score-display">Score: 0</h1>
+            <!--Timer-->
+            <div class="timer-container">
+                <div id="time">30 s</div>
+                <div class="timer">
+                    <div id="bar"></div>
+                </div>
             </div>
-        </div>
-        <!--Multiple Choice Options-->
-        <ol class="choices">
-            <h2>Can you guess the song?</h2>
-            <div class="ui-grid-a">
-                <div class="ui-block-a">
+            <!--Multiple Choice Options-->
+            <ol class="choices">
+                <h2>Can you guess the song?</h2>
+                <div class="ui-grid-a">
+                    <div class="ui-block-a">
+                        <li>
+                            <button type="button" class="btn btn-primary btn-outline" data-toggle="button" aria-pressed="false" autocomplete="off" onclick="updateScore()"><img class="button-album-cover" src="images/album-cover.jpg"></button>
+                        </li>
+                        <li>
+                            <button type="button" class="btn btn-primary btn-outline" data-toggle="button" aria-pressed="false" autocomplete="off" onclick="updateScore()"><img class="button-album-cover" src="images/album-cover.jpg"></button>
+                        </li>
+                    </div>
+                </div>
+                <div class="ui-block-b">
                     <li>
                         <button type="button" class="btn btn-primary btn-outline" data-toggle="button" aria-pressed="false" autocomplete="off" onclick="updateScore()"><img class="button-album-cover" src="images/album-cover.jpg"></button>
                     </li>
@@ -207,22 +218,19 @@
                         <button type="button" class="btn btn-primary btn-outline" data-toggle="button" aria-pressed="false" autocomplete="off" onclick="updateScore()"><img class="button-album-cover" src="images/album-cover.jpg"></button>
                     </li>
                 </div>
+            </ol>
+            <div class="record">
+                <p><img class="record-gif" alt="spinning record player gif" src="images/spinning-record.gif" /></p>
+                <!-- source: https://thumbs.gfycat.com/AcidicJollyIrukandjijellyfish-size_restricted.gif -->
             </div>
-            <div class="ui-block-b">
-                <li>
-                    <button type="button" class="btn btn-primary btn-outline" data-toggle="button" aria-pressed="false" autocomplete="off" onclick="updateScore()"><img class="button-album-cover" src="images/album-cover.jpg"></button>
-                </li>
-                <li>
-                    <button type="button" class="btn btn-primary btn-outline" data-toggle="button" aria-pressed="false" autocomplete="off" onclick="updateScore()"><img class="button-album-cover" src="images/album-cover.jpg"></button>
-                </li>
-            </div>
-        </ol>
-        <div class="record">
-            <p><img class="record-gif" alt="spinning record player gif" src="images/spinning-record.gif" /></p>
-            <!-- source: https://thumbs.gfycat.com/AcidicJollyIrukandjijellyfish-size_restricted.gif -->
         </div>
     </div>
-    <!-- </div> -->
+    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    </script>
 </body>
 
 </html>
