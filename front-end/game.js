@@ -26,6 +26,7 @@ var answers = [];
         demos[i] = data.tracks.items[i].preview_url;
         console.log("from spotify request: " + tracks[i] + " " + albumcovers[i] + " " + demos[i]);
       }  
+      updateChoices();
     }
 
     /*  client side:
@@ -45,15 +46,20 @@ var answers = [];
       var count = 10;
 
       while (count > 0) {
-        //play song 
+        //play song  http://html.com/attributes/audio-src/
 
       }
     }
 
     function updateChoices() {
-      /* currently not working */
-      $("button-album-cover-1").attr("src", "images/hiphop.jpg");
-
+      var img_src = albumcovers[0]
+      document.getElementById("button-album-cover-1").src=img_src;
+      img_src = albumcovers[1]
+      document.getElementById("button-album-cover-2").src=img_src;
+      img_src = albumcovers[2]
+      document.getElementById("button-album-cover-3").src=img_src;
+      img_src = albumcovers[3]
+      document.getElementById("button-album-cover-4").src=img_src;
     }
 
     function getUserInfo(id) {
