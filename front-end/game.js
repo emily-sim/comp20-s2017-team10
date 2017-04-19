@@ -12,20 +12,62 @@ var answers = [];
         request.onreadystatechange = function() {
             if (request.readyState === 4 && request.status === 200) {
                 var data = JSON.parse(request.responseText);  
-                storeData(data);                
+                storeTrackData(data);                
             } // else -- handle errors
         }
 
     }
 
-    function storeData(data) {
+    function storeTrackData(data) {
       for (var i = 0; i < 4; i++) {
         tracks[i] = data.tracks.items[i].name;
-        // 300px x 300px on API
+        // img 300px x 300px on API
         albumcovers[i] = data.tracks.items[i].album.images[1].url;
         demos[i] = data.tracks.items[i].preview_url;
         console.log("from spotify request: " + tracks[i] + " " + albumcovers[i] + " " + demos[i]);
       }  
+    }
+
+    /*  client side:
+     * 1) while loop for 10 songs for one round 
+     * 2) load album covers into HTML http://stackoverflow.com/questions/554273/changing-the-image-source-using-jquery
+     * 3) autoplay a random demo[] element
+     * 4) keep track of user score
+     * 5) keep track of album covers and song names of correct songs
+     * 6) when round complete -- go to new static page displaying 5) and 4) 
+     * server side:
+     * 1) get request user info via \players
+     * 2) send new high score back using post request \submit
+    */
+    function runGame() {
+      var user_id = 135   // hard coded for now
+      var highscore = getUserInfo(user_id);
+      var count = 10;
+
+      while (count > 0) {
+        //play song 
+
+      }
+    }
+
+    function updateChoices() {
+      /* currently not working */
+      $("button-album-cover-1").attr("src", "images/hiphop.jpg");
+
+    }
+
+    function getUserInfo(id) {
+      var request = new XMLHttpRequest();
+      request.open("GET", "http://musicguessing.herokuapp.com/user", true);
+      request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+      request.send();
+      request.onreadystatechange = function() {
+            if (request.readyState === 4 && request.status === 200) {
+                // returns player.cursor?
+                var data = JSON.parse(request.responseText);  
+                     
+            } // else -- handle errors
+        }
     }
 
     function loadPlaylist() {
@@ -37,43 +79,31 @@ var answers = [];
         console.log("GENRE: " + genre[1]);
 
         if (genre[1] === 'pop') {
-            var data = spotifyRequest("https://api.spotify.com/v1/search?q=genre%3Apop&type=track&market=US&limit=4"); 
+          spotifyRequest("https://api.spotify.com/v1/search?q=genre%3Apop&type=track&market=US&limit=4"); 
+          
         } else if (genre[1] === 'hiphop') {
-
-            var tracks = spotifyRequest("https://api.spotify.com/v1/search?q=genre%3Ahip-hop&type=track&market=US&limit=4");
+          spotifyRequest("https://api.spotify.com/v1/search?q=genre%3Ahip-hop&type=track&market=US&limit=4");
 
         } else if (genre[1] === 'punkrock') {
-
-            var tracks = spotifyRequest("https://api.spotify.com/v1/search?q=genre%3Apunk&type=track&market=US&limit=4");
-
-            console.log("in load playlist" + tracks);
-
-            var tracksJSON = JSON.parse(tracks);
-            //tracks.JSON.
+          spotifyRequest("https://api.spotify.com/v1/search?q=genre%3Apunk&type=track&market=US&limit=4");
 
         } else if (genre[1] === 'r&b') {
-
-            var tracks = spotifyRequest("https://api.spotify.com/v1/search?q=genre%3AR%26B&type=track&market=US&limit=4");
+          spotifyRequest("https://api.spotify.com/v1/search?q=genre%3AR%26B&type=track&market=US&limit=4");
 
         } else if (genre[1] === 'electronic') {
-
-            var tracks = spotifyRequest("https://api.spotify.com/v1/search?q=genre%3Aelectronic&type=track&market=US&limit=4");
+          spotifyRequest("https://api.spotify.com/v1/search?q=genre%3Aelectronic&type=track&market=US&limit=4");
 
         } else if (genre[1] === 'country') {
-
-            var tracks = spotifyRequest("https://api.spotify.com/v1/search?q=genre%3Acountry&type=track&market=US&limit=4");
+          spotifyRequest("https://api.spotify.com/v1/search?q=genre%3Acountry&type=track&market=US&limit=4");
 
         } else if (genre[1] === 'latin') {
-
-            var tracks = spotifyRequest("https://api.spotify.com/v1/search?q=genre%3Alatin&type=track&market=US&limit=4");
+          spotifyRequest("https://api.spotify.com/v1/search?q=genre%3Alatin&type=track&market=US&limit=4");
 
         } else if (genre[1] === 'rock') {
-
-            var tracks = spotifyRequest("https://api.spotify.com/v1/search?q=genre%3Arock&type=track&market=US&limit=4");
+          spotifyRequest("https://api.spotify.com/v1/search?q=genre%3Arock&type=track&market=US&limit=4");
 
         } else if (genre[1] === 'indie') {
-
-            var tracks = spotifyRequest("https://api.spotify.com/v1/search?q=genre%3Aindiepop&type=track&market=US&limit=4");
+          spotifyRequest("https://api.spotify.com/v1/search?q=genre%3Aindiepop&type=track&market=US&limit=4");
 
         }
 
