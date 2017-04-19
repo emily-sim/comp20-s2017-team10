@@ -80,7 +80,7 @@
                 <div class="ui-grid-a">
                     <div class="ui-block-a">
                         <li>
-                            <button type="button" class="btn btn-primary btn-outline" data-toggle="button" aria-pressed="false" autocomplete="off" onclick="updateScore()"><img class="button-album-cover" src="images/album-cover.jpg"></button>
+                            <button type="button" class="btn btn-primary btn-outline" data-toggle="button" aria-pressed="false" autocomplete="off" onclick="updateScore()"><img id="button-album-cover-1" src="images/album-cover.jpg"></button>
                         </li>
                         <li>
                             <button type="button" class="btn btn-primary btn-outline" data-toggle="button" aria-pressed="false" autocomplete="off" onclick="updateScore()"><img class="button-album-cover" src="images/album-cover.jpg"></button>
@@ -96,9 +96,14 @@
                     </li>
                 </div>
             </ol>
+
             <div class="record">
                 <p><img class="record-gif" alt="spinning record player gif" src="images/spinning-record.gif" /></p>
                 <!-- source: https://thumbs.gfycat.com/AcidicJollyIrukandjijellyfish-size_restricted.gif -->
+            </div>
+
+            <div>
+              
             </div>
         </div>
     </div>
@@ -107,6 +112,7 @@
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");
     });
+
     </script>
 </body>
 
