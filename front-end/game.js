@@ -2,6 +2,8 @@ var tracks = [];
 var albumcovers = [];
 var demos = [];
 var answers = [];
+var correct_answer;
+var score = 0;
 
     function spotifyRequest(url) {
 
@@ -43,35 +45,41 @@ var answers = [];
     function runGame() {
       var user_id = 135   // hard coded for now
       var highscore = getUserInfo(user_id);
-      var offset = 4;
+      var offset = getRandomArbitrary(0, 50);
       var genre = getQuery();
-      //loadPlaylist(genre, offset);
+
 
       //for (var count = 0; count < 10; count++) {
         //play song  http://html.com/attributes/audio-src/
         loadPlaylist(genre, offset);
-        //randomly generate number 0-4
-        var demo_track = demos[1];
+        var random = getRandomArbitrary(0, 4);  // min inclusive, max exclusive
+        correct_answer = random;
+        var demo_track = demos[random];
         document.getElementById("demo").src=demo_track;
+
         offset = offset + 4;
       //}
     }
 
+    function getRandomArbitrary(min, max) {
+     return Math.random() * (max - min) + min;
+    }
+
     function updateChoices() {
       var img_src = albumcovers[0]
-      document.getElementById("button-album-cover-1").src=img_src;
+      document.getElementById("button-album-cover-0").src=img_src;
       img_src = albumcovers[1]
-      document.getElementById("button-album-cover-2").src=img_src;
+      document.getElementById("button-album-cover-1").src=img_src;
       img_src = albumcovers[2]
-      document.getElementById("button-album-cover-3").src=img_src;
+      document.getElementById("button-album-cover-2").src=img_src;
       img_src = albumcovers[3]
-      document.getElementById("button-album-cover-4").src=img_src;
+      document.getElementById("button-album-cover-3").src=img_src;
 
       /* not showing up currently */
-      document.getElementById("button-album-cover-1").innerHTML = tracks[0];
-      document.getElementById("button-album-cover-2").innerHTML = tracks[1];
-      document.getElementById("button-album-cover-3").innerHTML = tracks[2];
-      document.getElementById("button-album-cover-4").innerHTML = tracks[3];
+      document.getElementById("button-album-cover-0").innerHTML = tracks[0];
+      document.getElementById("button-album-cover-1").innerHTML = tracks[1];
+      document.getElementById("button-album-cover-2").innerHTML = tracks[2];
+      document.getElementById("button-album-cover-3").innerHTML = tracks[3];
     }
 
     function getUserInfo(id) {
@@ -128,9 +136,10 @@ var answers = [];
         }
     }
 
-    var score = 0;
 
-    function updateScore() {
+    function updateScore(button_num) {
+
+
         var scoreDisplay = document.getElementById("score-display");
 
         /************************************/
@@ -138,6 +147,11 @@ var answers = [];
         /* if correct -- a "correct!" message?, add to score, stop timer, go to next song which resets timer and buttons */
 
         /* add 1 to score, maybe more if got it with less time? */
-        score += 1;
+
+        if (button_num == correct_answer) {
+          score += 1;
+
+        } 
+        
         scoreDisplay.innerHTML = "Score: " + score;
     };
