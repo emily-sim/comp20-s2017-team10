@@ -3,7 +3,7 @@
 
 <head>
 	<title>MIXR</title>
-	<meta charset="utf-8" /> 
+	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<!--CSS and Styles-->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -13,6 +13,7 @@
     <!--JS and APIs-->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<script src = "index.js"> </script>
 </head>
 
 <body>
@@ -23,7 +24,7 @@
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
        				<span class="icon-bar"></span>
         			<span class="icon-bar"></span>
-        			<span class="icon-bar"></span> 
+        			<span class="icon-bar"></span>
       			</button>
 				<a class="navbar-brand" href="#">MIXR</a>
 			</div>
@@ -55,7 +56,7 @@
 					</li>
 
 					<li>
-						<a href="#"><span class="glyphicon glyphicon-user"></span> Login</a>
+						<a href="#" onclick="FB.login(checkLoginState())"><span class="glyphicon glyphicon-user"></span> Login</a>
 					</li>
 				</ul>
 			</div>
