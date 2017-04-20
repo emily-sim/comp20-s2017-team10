@@ -1,4 +1,4 @@
- // This is called with the results from from FB.getLoginStatus().
+  // This is called with the results from from FB.getLoginStatus().
   function statusChangeCallback(response) {
     console.log('statusChangeCallback');
     console.log(response);
@@ -8,7 +8,7 @@
     // for FB.getLoginStatus().
     if (response.status === 'connected') {
       // Logged into your app and Facebook.
-      testAPI();
+//      testAPI();
 
 
 
@@ -22,15 +22,15 @@
           console.log("inside function");
           console.log(response);
           if (response && !response.error) {
-            var oReq = new XMLHttpRequest();
-            var url = "https://musicguess.herokuapp.com";
+  //          var oReq = new XMLHttpRequest();
+  //          var url = "https://musicguess.herokuapp.com";
          //   var params = "user-id=" + response.id;
             console.log("RESPONSE THING BEING CHECKED");
             console.log(response);
 
             var oReq = new XMLHttpRequest();
- //           var url = "https://musicguess.herokuapp.com/submit";
-            var url = "http://localhost:5000/submit"
+            var url = "https://musicguessing.herokuapp.com/submit";
+//            var url = "http://localhost:5000/submit"
             var params = "userid=" + response.id + "&username=" + response.last_name;
             oReq.open("POST", url, true);
             oReq.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
@@ -52,8 +52,9 @@
 
     } else {
       // The person is not logged into your app or we are unable to tell.
-      document.getElementById('status').innerHTML = 'Please log ' +
-        'into this app.';
+      //document.getElementById('status').innerHTML = 'Please log ' +
+      //  'into this app.';
+      console.log("Not logged in");
     }
 
 
@@ -103,3 +104,14 @@
     js.src = "https://connect.facebook.net/en_US/sdk.js";
     fjs.parentNode.insertBefore(js, fjs);
   }(document, 'script', 'facebook-jssdk'));
+
+  // Here we run a very simple test of the Graph API after login is
+  // successful.  See statusChangeCallback() for when this call is made.
+    function testAPI() {
+    console.log('Welcome!  Fetching your information.... ');
+    FB.api('/me', function(response) {
+      console.log('Successful login for: ' + response.name);
+//      document.getElementById('status').innerHTML =
+//        'Thanks for logging in, ' + response.name + '!';
+    });
+  }
