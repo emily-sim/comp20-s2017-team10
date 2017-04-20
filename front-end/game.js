@@ -47,12 +47,14 @@ var answers = [];
       var genre = getQuery();
       //loadPlaylist(genre, offset);
 
-      for (var count = 0; count < 10; count++) {
+      //for (var count = 0; count < 10; count++) {
         //play song  http://html.com/attributes/audio-src/
         loadPlaylist(genre, offset);
-
+        //randomly generate number 0-4
+        var demo_track = demos[1];
+        document.getElementById("demo").src=demo_track;
         offset = offset + 4;
-      }
+      //}
     }
 
     function updateChoices() {

@@ -109,29 +109,21 @@ ol li {
 }
 
 #button-album-cover-1 {
-	width: 70px;
+	width: 150px;
 	height: auto;
 }
 
 #button-album-cover-2 {
-	width: 70px;
+	width: 150px;
 	height: auto;
 }
 
 #button-album-cover-3 {
-	width: 70px;
+	width: 150px;
 	height: auto;
 }
 
 #button-album-cover-4 {
-	width: 70px;
+	width: 150px;
 	height: auto;
-}
-
-.record-gif {
-	width: 20%;
-	height: auto;
-	position: absolute;
-	right: 40%;
-	top: 300px;
 }
