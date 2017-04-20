@@ -47,10 +47,49 @@ function runGame() {
   var offset = getRandomArbitrary(0, 50);
   var genre = getQuery();
 
+  //play song  http://html.com/attributes/audio-src/
 
   
-    //play song  http://html.com/attributes/audio-src/
-    loadPlaylist(genre, offset);
+  var elem = document.getElementById("bar");
+  var time = document.getElementById("time");
+  var width = 0;
+  
+  loadPlaylist(genre, offset);
+  //startTimer();
+
+  while (counter < 10) {
+    var id = setInterval(frame, 300);
+    function frame() {
+      
+        
+       if (width >= 100) {
+          time.innerHTML = "Time's up!";
+          clearInterval(id);
+          counter++;
+          loadPlaylist(genre, offset);
+          
+        } else if (/*correct button is clicked? */) {
+
+          loadPlaylist(genre, offset);
+        } else {
+          width++;
+          elem.style.width = width + '%';
+          if (width % 3 == 0) {
+            /****this is counting too fast*******/
+            time.innerHTML = (30 - width / 3) + ' s';
+          }
+        }
+      
+      }
+    }
+
+    if (counter == 9) {
+      /* go to final score page */
+    }
+
+
+
+    
     correct_answer = getRandomArbitrary(0, 4);  // min inclusive, max exclusive
     var demo_track = demos[random];
     document.getElementById("demo").src=demo_track;
@@ -80,18 +119,18 @@ function updateChoices() {
   document.getElementById("button-album-cover-3").innerHTML = tracks[3];
 }
 
-    function getUserInfo(id) {
-      var request = new XMLHttpRequest();
-      request.open("GET", "http://musicguessing.herokuapp.com/user", true);
-      request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-      request.send();
-      request.onreadystatechange = function() {
-            if (request.readyState === 4 && request.status === 200) {
-                // returns player.cursor?
-                var data = JSON.parse(request.responseText);            
-            } // else -- handle errors
-        }
-    }
+function getUserInfo(id) {
+  var request = new XMLHttpRequest();
+  request.open("GET", "http://musicguessing.herokuapp.com/user", true);
+  request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+  request.send();
+  request.onreadystatechange = function() {
+    if (request.readyState === 4 && request.status === 200) {
+      // returns player.cursor?
+      var data = JSON.parse(request.responseText);            
+    } // else -- handle errors
+  }
+}
 
     function getQuery(){
       var queryString = window.location.search;
@@ -114,22 +153,16 @@ function updateChoices() {
 
         function frame() {
             if (width >= 100) {
-                time.innerHTML = "Time's up!";
-                //function move();
+              time.innerHTML = "Time's up!";
+              clearInterval(id);
 
-                clearInterval(id);
-
-            } else {
+            }else {
                 width++;
                 elem.style.width = width + '%';
-                if (width % 3 == 0) {
+                //if (width % 3 == 0) {
                     /****this is counting too fast*******/
-                    time.innerHTML = (30 - width / 3) + ' s';
-                }
-
-                /* when width == 100 restart timer, start playing next song clip, reset multiple choice buttons */
-                /* can you just call the move func again does it do weird returns like recursion */
-
+                    //time.innerHTML = (30 - width / 3) + ' s';
+                //}
             }
         }
     }
@@ -146,10 +179,12 @@ function updateChoices() {
 
         /* add 1 to score, maybe more if got it with less time? */
 
+
+
         if (button_num == correct_answer) {
           score += 1;
 
         } 
-
+        counter++;
         scoreDisplay.innerHTML = "Score: " + score;
     };
