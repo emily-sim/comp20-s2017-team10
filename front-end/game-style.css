@@ -108,6 +108,11 @@ ol li {
     /*color: #ff4c4c;*/
 }
 
+#button-album-cover-0 {
+	width: 150px;
+	height: auto;
+}
+
 #button-album-cover-1 {
 	width: 150px;
 	height: auto;
@@ -119,11 +124,6 @@ ol li {
 }
 
 #button-album-cover-3 {
-	width: 150px;
-	height: auto;
-}
-
-#button-album-cover-4 {
 	width: 150px;
 	height: auto;
 }
