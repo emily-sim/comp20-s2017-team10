@@ -68,7 +68,7 @@ h2 {
 .choices {
 	/*list-style-type: none;*/
 	margin-top: 70px;
-	margin-left: 25%;
+	margin-left: 20%;
 	color: white;
 }
 
@@ -109,21 +109,21 @@ ol li {
 }
 
 #button-album-cover-0 {
-	width: 150px;
+	width: 130px;
 	height: auto;
 }
 
 #button-album-cover-1 {
-	width: 150px;
+	width: 130px;
 	height: auto;
 }
 
 #button-album-cover-2 {
-	width: 150px;
+	width: 130px;
 	height: auto;
 }
 
 #button-album-cover-3 {
-	width: 150px;
+	width: 130px;
 	height: auto;
 }
