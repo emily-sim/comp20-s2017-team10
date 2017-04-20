@@ -43,11 +43,15 @@ var answers = [];
     function runGame() {
       var user_id = 135   // hard coded for now
       var highscore = getUserInfo(user_id);
-      var count = 10;
+      var offset = 4;
+      var genre = getQuery();
+      //loadPlaylist(genre, offset);
 
-      while (count > 0) {
+      for (var count = 0; count < 10; count++) {
         //play song  http://html.com/attributes/audio-src/
+        loadPlaylist(genre, offset);
 
+        offset = offset + 4;
       }
     }
 
@@ -60,6 +64,12 @@ var answers = [];
       document.getElementById("button-album-cover-3").src=img_src;
       img_src = albumcovers[3]
       document.getElementById("button-album-cover-4").src=img_src;
+
+      /* not showing up currently */
+      document.getElementById("button-album-cover-1").innerHTML = tracks[0];
+      document.getElementById("button-album-cover-2").innerHTML = tracks[1];
+      document.getElementById("button-album-cover-3").innerHTML = tracks[2];
+      document.getElementById("button-album-cover-4").innerHTML = tracks[3];
     }
 
     function getUserInfo(id) {
@@ -70,51 +80,22 @@ var answers = [];
       request.onreadystatechange = function() {
             if (request.readyState === 4 && request.status === 200) {
                 // returns player.cursor?
-                var data = JSON.parse(request.responseText);  
-                     
+                var data = JSON.parse(request.responseText);            
             } // else -- handle errors
         }
     }
 
-    function loadPlaylist() {
-        var queryString = window.location.search;
-        queryString = queryString.substring(1);
+    function getQuery(){
+      var queryString = window.location.search;
+      queryString = queryString.substring(1);
 
-        var genre = queryString.split('=');
+      var genre = queryString.split('=');
+      console.log(genre[1]);
+      return genre[1];
+    }
 
-        console.log("GENRE: " + genre[1]);
-
-        if (genre[1] === 'pop') {
-          spotifyRequest("https://api.spotify.com/v1/search?q=genre%3Apop&type=track&market=US&limit=4"); 
-          
-        } else if (genre[1] === 'hiphop') {
-          spotifyRequest("https://api.spotify.com/v1/search?q=genre%3Ahip-hop&type=track&market=US&limit=4");
-
-        } else if (genre[1] === 'punkrock') {
-          spotifyRequest("https://api.spotify.com/v1/search?q=genre%3Apunk&type=track&market=US&limit=4");
-
-        } else if (genre[1] === 'r&b') {
-          spotifyRequest("https://api.spotify.com/v1/search?q=genre%3AR%26B&type=track&market=US&limit=4");
-
-        } else if (genre[1] === 'electronic') {
-          spotifyRequest("https://api.spotify.com/v1/search?q=genre%3Aelectronic&type=track&market=US&limit=4");
-
-        } else if (genre[1] === 'country') {
-          spotifyRequest("https://api.spotify.com/v1/search?q=genre%3Acountry&type=track&market=US&limit=4");
-
-        } else if (genre[1] === 'latin') {
-          spotifyRequest("https://api.spotify.com/v1/search?q=genre%3Alatin&type=track&market=US&limit=4");
-
-        } else if (genre[1] === 'rock') {
-          spotifyRequest("https://api.spotify.com/v1/search?q=genre%3Arock&type=track&market=US&limit=4");
-
-        } else if (genre[1] === 'indie') {
-          spotifyRequest("https://api.spotify.com/v1/search?q=genre%3Aindiepop&type=track&market=US&limit=4");
-
-        }
-
-        /* call function to start timer */
-        move();
+    function loadPlaylist(genre, offset) {
+      spotifyRequest("https://api.spotify.com/v1/search?q=genre%3A" + genre + "&type=track&market=US&limit=4&offset=" + offset);
     }
 
     function move() {
@@ -144,7 +125,6 @@ var answers = [];
             }
         }
     }
-
 
     var score = 0;
 
