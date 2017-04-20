@@ -6,6 +6,9 @@ var correct_answer;
 var score = 0;
 var counter = 0;
 
+var clicked = false; // bool for is a button has been clicked for that question
+var times_up = false; // bool for if 30 seconds is over
+
 function spotifyRequest(url) {
   var request = new XMLHttpRequest();
   request.open("GET", url, true);
@@ -42,23 +45,31 @@ function storeTrackData(data) {
      * 2) send new high score back using post request \submit
     */
 function runGame() {
-  var user_id = 135   // hard coded for now
+  var user_id = 135;   // hard coded for now
   var highscore = getUserInfo(user_id);
   var offset = getRandomArbitrary(0, 50);
   var genre = getQuery();
 
+
+
+  console.log("offset: " + offset);
+
+
+
+
   //play song  http://html.com/attributes/audio-src/
 
   
-  var elem = document.getElementById("bar");
-  var time = document.getElementById("time");
-  var width = 0;
+  correct_answer = getRandomArbitrary(0, 4);  // min inclusive, max exclusive
+  var demo_track = demos[correct_answer];
+  document.getElementById("demo").src=demo_track;
+  offset = offset + 4;
   
-  loadPlaylist(genre, offset);
+  
   //startTimer();
 
-  while (counter < 10) {
-    var id = setInterval(frame, 300);
+  //while (counter < 10) {
+  /*  var id = setInterval(frame, 300);
     function frame() {
       
         
@@ -68,38 +79,62 @@ function runGame() {
           counter++;
           loadPlaylist(genre, offset);
           
-        } else if (/*correct button is clicked? */) {
+        //} else if (/*correct button is clicked? *) {
 
-          loadPlaylist(genre, offset);
+        //  loadPlaylist(genre, offset);
         } else {
           width++;
           elem.style.width = width + '%';
-          if (width % 3 == 0) {
-            /****this is counting too fast*******/
-            time.innerHTML = (30 - width / 3) + ' s';
-          }
+          
         }
       
-      }
-    }
+      }*/
+    //}
 
-    if (counter == 9) {
+    //if (counter == 9) {
       /* go to final score page */
-    }
+    //}
 
+    
+    startTimer();
+    loadPlaylist(genre, offset);
+    while (counter < 10) {
+      /* run a 30 sec timer that tells you if it is still running or not */
+      var id = setInterval(round, 1000); /* this goes to function round every second */
+
+      function round() {
+        /* if timer still running */
+          /* if clicked == true */
+            /* clearInterval(id); --> this should reset the interval? */
+            /* continute */
+        /* else if counter < 10 (would it still go into this function if interval is over though? ) */
+          /* counter ++ */
+          /* ((((does it auto restart the interval  --  or just call it again)))) */
+          /* loadPlaylist(genre, offset); */
+      }
+
+      /*startTimer();
+      loadPlaylist(genre, offset);
+      if (times_up == true) {
+        counter++;
+        continue;
+      } else if (clicked == true) {
+        continue;
+      } else {
+        
+      }*/
+    }
 
 
     
-    correct_answer = getRandomArbitrary(0, 4);  // min inclusive, max exclusive
-    var demo_track = demos[random];
-    document.getElementById("demo").src=demo_track;
-    startTimer();
-    offset = offset + 4;
-  }
+    
+  
 }
 
 function getRandomArbitrary(min, max) {
-  return Math.random() * (max - min) + min;
+  var num = Math.random() * (max - min) + min;
+  num = Math.floor(num);
+  return num;
 }
 
 function updateChoices() {
@@ -146,6 +181,7 @@ function getUserInfo(id) {
     }
 
     function startTimer() {
+        times_up = false;
         var elem = document.getElementById("bar");
         var time = document.getElementById("time");
         var width = 0;
@@ -154,15 +190,16 @@ function getUserInfo(id) {
         function frame() {
             if (width >= 100) {
               time.innerHTML = "Time's up!";
+              times_up = true;
               clearInterval(id);
 
             }else {
                 width++;
                 elem.style.width = width + '%';
-                //if (width % 3 == 0) {
+                if (width % 3 == 0) {
                     /****this is counting too fast*******/
-                    //time.innerHTML = (30 - width / 3) + ' s';
-                //}
+                    time.innerHTML = (30 - width / 3) + ' s';
+                }
             }
         }
     }
