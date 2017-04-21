@@ -14,6 +14,7 @@
     <!--JS and APIs-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src = "index.js"> </script>
     <script>
     function genQueryString(key, value) {
         var uri = "game.html";
@@ -52,7 +53,7 @@
                 <div class="collapse navbar-collapse" id="myNavbar">
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="#"><span class="glyphicon glyphicon-list-alt"></span> Leaderboard</a></li>
-                        <li><a id="menu-toggle" href="#"><span class="glyphicon glyphicon-user"></span> Login</a></li>
+                        <li><a id="menu-toggle" href="#"><span class="glyphicon glyphicon-user"></span> Account</a></li>
                     </ul>
                 </div>
             </div>
@@ -68,10 +69,13 @@
                         <img id="profile" src="images/pop.jpg" class="img-responsive" width="70" height="70">
                     </li>
                     <li>
-                        <p id="name"> My name </p>
+                        <p id="name"> Guest </p>
                     </li>
                     <li>
-                        <p id="score"> My score </p>
+                        <p id="score"> Score: 0 </p>
+                    </li>
+                    <li>
+                        <a href="#" onclick="FB.login(checkLoginState())"><span class="glyphicon glyphicon-user"></span> Facebook Login</a>
                     </li>
                 </li>
             </ul>
