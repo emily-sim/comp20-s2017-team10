@@ -52,8 +52,6 @@ function runGame() {
   correct_answer = getRandomArbitrary(0, 4);  // min inclusive, max exclusive
   loadPlaylist(genre, offset); // makes request, stores data into array, updates choices
 
-  
-
   offset = offset + 4;    
    //while (counter < 10) {
       /* run a 30 sec timer that tells you if it is still running or not */
