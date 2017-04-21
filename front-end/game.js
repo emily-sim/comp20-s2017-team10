@@ -49,7 +49,7 @@ function runGame() {
   var highscore = getUserInfo(user_id);
   var offset = getRandomArbitrary(0, 50);
   var genre = getQuery();
- 
+  correct_answer = getRandomArbitrary(0, 4);  // min inclusive, max exclusive
   loadPlaylist(genre, offset); // makes request, stores data into array, updates choices
 
   
@@ -102,13 +102,12 @@ function updatePage() {
   document.getElementById("button-album-cover-3").src=img_src;
 
   /* not showing up currently */
-  document.getElementById("button-album-cover-0").innerHTML = tracks[0];
-  document.getElementById("button-album-cover-1").innerHTML = tracks[1];
-  document.getElementById("button-album-cover-2").innerHTML = tracks[2];
-  document.getElementById("button-album-cover-3").innerHTML = tracks[3];
+  document.getElementById("button-song-name-0").innerHTML = tracks[0];
+  document.getElementById("button-song-name-1").innerHTML = tracks[1];
+  document.getElementById("button-song-name-2").innerHTML = tracks[2];
+  document.getElementById("button-song-name-3").innerHTML = tracks[3];
 
   /* play music */
-  correct_answer = getRandomArbitrary(0, 4);  // min inclusive, max exclusive
   var demo_track = demos[correct_answer];
   document.getElementById("media").src=demo_track;
 }
