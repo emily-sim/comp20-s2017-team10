@@ -49,60 +49,18 @@ function runGame() {
   var highscore = getUserInfo(user_id);
   var offset = getRandomArbitrary(0, 50);
   var genre = getQuery();
-
-
-
-  console.log("offset: " + offset);
-
-
-
-
-  //play song  http://html.com/attributes/audio-src/
-
-  
   correct_answer = getRandomArbitrary(0, 4);  // min inclusive, max exclusive
+  console.log(correct_answer);
   var demo_track = demos[correct_answer];
+  console.log(demos[2]);
   document.getElementById("demo").src=demo_track;
-  offset = offset + 4;
-  
-  
-  //startTimer();
-
-  //while (counter < 10) {
-  /*  var id = setInterval(frame, 300);
-    function frame() {
-      
-        
-       if (width >= 100) {
-          time.innerHTML = "Time's up!";
-          clearInterval(id);
-          counter++;
-          loadPlaylist(genre, offset);
-          
-        //} else if (/*correct button is clicked? *) {
-
-        //  loadPlaylist(genre, offset);
-        } else {
-          width++;
-          elem.style.width = width + '%';
-          
-        }
-      
-      }*/
-    //}
-
-    //if (counter == 9) {
-      /* go to final score page */
-    //}
-
-    
-    startTimer();
-    loadPlaylist(genre, offset);
-    while (counter < 10) {
+  loadPlaylist(genre, offset);
+  offset = offset + 4;    
+   //while (counter < 10) {
       /* run a 30 sec timer that tells you if it is still running or not */
-      var id = setInterval(round, 1000); /* this goes to function round every second */
+     // var id = setInterval(round, 1000); /* this goes to function round every second */
 
-      function round() {
+    //  function round() {
         /* if timer still running */
           /* if clicked == true */
             /* clearInterval(id); --> this should reset the interval? */
@@ -111,7 +69,7 @@ function runGame() {
           /* counter ++ */
           /* ((((does it auto restart the interval  --  or just call it again)))) */
           /* loadPlaylist(genre, offset); */
-      }
+     // }
 
       /*startTimer();
       loadPlaylist(genre, offset);
@@ -123,12 +81,8 @@ function runGame() {
       } else {
         
       }*/
-    }
+   // }
 
-
-    
-    
-  
 }
 
 function getRandomArbitrary(min, max) {
