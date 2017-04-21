@@ -30,7 +30,7 @@ function storeTrackData(data) {
     demos[i] = data.tracks.items[i].preview_url;
     console.log("from spotify request: " + tracks[i] + " " + albumcovers[i] + " " + demos[i]);
   }  
-  updateChoices();
+  updatePage();
 }
 
     /*  client side:
@@ -49,12 +49,11 @@ function runGame() {
   var highscore = getUserInfo(user_id);
   var offset = getRandomArbitrary(0, 50);
   var genre = getQuery();
-  correct_answer = getRandomArbitrary(0, 4);  // min inclusive, max exclusive
-  console.log(correct_answer);
-  var demo_track = demos[correct_answer];
-  console.log(demos[2]);
-  document.getElementById("demo").src=demo_track;
-  loadPlaylist(genre, offset);
+ 
+  loadPlaylist(genre, offset); // makes request, stores data into array, updates choices
+
+  
+
   offset = offset + 4;    
    //while (counter < 10) {
       /* run a 30 sec timer that tells you if it is still running or not */
@@ -91,7 +90,8 @@ function getRandomArbitrary(min, max) {
   return num;
 }
 
-function updateChoices() {
+function updatePage() {
+  /* update MC */
   var img_src = albumcovers[0]
   document.getElementById("button-album-cover-0").src=img_src;
   img_src = albumcovers[1]
@@ -106,6 +106,11 @@ function updateChoices() {
   document.getElementById("button-album-cover-1").innerHTML = tracks[1];
   document.getElementById("button-album-cover-2").innerHTML = tracks[2];
   document.getElementById("button-album-cover-3").innerHTML = tracks[3];
+
+  /* play music */
+  correct_answer = getRandomArbitrary(0, 4);  // min inclusive, max exclusive
+  var demo_track = demos[correct_answer];
+  document.getElementById("media").src=demo_track;
 }
 
 function getUserInfo(id) {
