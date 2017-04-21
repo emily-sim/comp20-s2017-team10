@@ -131,9 +131,9 @@ function getUserInfo(id) {
       return genre[1];
     }
 
-    function loadPlaylist(genre, offset) {
-      spotifyRequest("https://api.spotify.com/v1/search?q=genre%3A" + genre + "&type=track&market=US&limit=4&offset=" + offset);
-    }
+function loadPlaylist(genre, offset) {
+  spotifyRequest("https://api.spotify.com/v1/search?q=genre%3A" + genre + "&type=track&market=US&limit=4&offset=" + offset);
+}
 
     function startTimer() {
         times_up = false;
@@ -160,24 +160,28 @@ function getUserInfo(id) {
     }
 
 
-    function updateScore(button_num) {
+function updateScore(button_num) {
 
 
-        var scoreDisplay = document.getElementById("score-display");
+  var scoreDisplay = document.getElementById("score-display");
 
-        /************************************/
-        /* check if answer is correct first */
-        /* if correct -- a "correct!" message?, add to score, stop timer, go to next song which resets timer and buttons */
+  /************************************/
+  /* check if answer is correct first */
+  /* if correct -- a "correct!" message?, add to score, stop timer, go to next song which resets timer and buttons */
 
-        /* add 1 to score, maybe more if got it with less time? */
+  /* add 1 to score, maybe more if got it with less time? */
 
 
 
-        if (button_num == correct_answer) {
-          score += 1;
+  if (button_num == correct_answer) {
+    score += 1;
 
-        } 
-        counter++;
-        clicked = true;
-        scoreDisplay.innerHTML = "Score: " + score;
-    };
+  } 
+  counter++;
+  clicked = true;
+  scoreDisplay.innerHTML = "Score: " + score;
+};
+
+function returnScore() {
+  return score;
+};
