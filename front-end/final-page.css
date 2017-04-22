@@ -1,0 +1,43 @@
+body {
+	background-color: black;
+}
+
+/*navigation bar */
+.navbar-brand {
+	font-family: 'Monoton';
+	font-size: 30px;
+}
+
+/* how to make the vertical alignment responsive? */
+#container {
+    text-align: center;
+    padding-top: 200px;
+}
+
+#header {
+	padding: 35px;
+}
+
+h1 {
+	font-family: 'Gil Sans Extrabold';
+	text-align: center;
+	font-size: 60px;
+	color: #e3dede;
+}
+
+h2 {
+	font-family: 'Arial';
+	font-size: 20px;
+	text-align: center;
+	color: #dbd2d2;
+	
+}
+
+p {
+	font-family: 'Roboto Slab';
+	padding-left: 30%;
+	font-size: 25px;
+	color: white;
+}
+
+/* 
