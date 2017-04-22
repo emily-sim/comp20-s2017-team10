@@ -14,7 +14,11 @@
     <!--JS and APIs-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBGVZFqzo2yJlvxgVaoNZH0bKSMjIoPA9c"></script>
     <script src = "index.js"> </script>
+    <script src = "game.js"> </script>
+    <script src = "sidebar.js"> </script>
+
     <script>
     function genQueryString(key, value) {
         var uri = "game.html";
@@ -72,7 +76,10 @@
                         <p id="name"> Guest </p>
                     </li>
                     <li>
-                        <p id="score"> Score: 0 </p>
+                        <p id="score"> Score</p>
+                    </li>
+                    <li>
+                        <p id="location"> Location </p>
                     </li>
                     <li>
                         <a href="#" onclick="FB.login(checkLoginState())"><span class="glyphicon glyphicon-user"></span> Facebook Login</a>
@@ -161,10 +168,14 @@
         </div>
         <!-- /#page-content-wrapper -->
     </div>
+
     <script>
     $("#menu-toggle").click(function(e) {
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");
+
+        newScore = returnScore();
+        $("#score").text(newScore);
     });
     </script>
 </body>
