@@ -89,6 +89,7 @@ ol li {
 	float: left;
 	width: 60%;
 	height: 170px;
+	margin-bottom: 50px;
 }
 
 .btn-outline {
@@ -129,17 +130,21 @@ ol li {
 }
 
 #button-song-name-0 {
-
+	font-size: 20px;
 }
 
 #button-song-name-1 {
-
+	font-size: 20px;
 }
 
 #button-song-name-2 {
-
+	font-size: 20px;
 }
 
 #button-song-name-3 {
+	font-size: 20px;
+}
 
+#quit-btn {
+	color: #000000;
 }

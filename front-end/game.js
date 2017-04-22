@@ -55,7 +55,7 @@ function runGame() {
     offset = offset + 4; 
   }*/
 
-  console.log(score);
+  
 
 }
 
