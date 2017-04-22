@@ -55,7 +55,7 @@ function runGame() {
     offset = offset + 4; 
   }*/
 
-  
+
 
 }
 
@@ -168,3 +168,4 @@ function getQuery(){
 function loadPlaylist(genre, offset) {
   spotifyRequest("https://api.spotify.com/v1/search?q=genre%3A" + genre + "&type=track&market=US&limit=4&offset=" + offset);
 }
+
