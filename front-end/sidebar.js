@@ -23,7 +23,7 @@ function initializeLocation() {
     console.log("initializing");
     geocoder = new google.maps.Geocoder();
     getUserLocation();
-    
+
 }
 
 function codeLatLng(lat, lng) {
@@ -35,7 +35,7 @@ function codeLatLng(lat, lng) {
             if (results[1]) {
                 //formatted address
                 // alert(results[0].formatted_address)
-                    //find country name
+                //find country name
                 for (var i = 0; i < results[0].address_components.length; i++) {
                     for (var b = 0; b < results[0].address_components[i].types.length; b++) {
 
@@ -43,7 +43,8 @@ function codeLatLng(lat, lng) {
                         if (results[0].address_components[i].types[b] == "administrative_area_level_1") {
                             //this is the object you are looking for
                             state = results[0].address_components[i];
-                        } if (results[0].address_components[i].types[b] == "country") {
+                        }
+                        if (results[0].address_components[i].types[b] == "country") {
                             country = results[0].address_components[i];
                             break;
                         }
@@ -53,6 +54,7 @@ function codeLatLng(lat, lng) {
                 return ("Your location: " + state.short_name + ", " + country.long_name);
                 // console.log(userLocation);
                 // console.log("Your location: " + state.short_name + ", " + country.long_name);
+                // alert("Your location: " + state.short_name + ", " + country.long_name);
 
             } else {
                 // alert("No results found");
@@ -62,5 +64,3 @@ function codeLatLng(lat, lng) {
         }
     });
 }
-
-
