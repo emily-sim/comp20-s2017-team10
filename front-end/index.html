@@ -14,7 +14,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBGVZFqzo2yJlvxgVaoNZH0bKSMjIoPA9c"></script>
-		<script src = "index.js"> </script>
+	<script src = "index.js"> </script>
     <script src="sidebar.js"></script>
 </head>
 
@@ -42,7 +42,7 @@
           								<h2 class="modal-title">Leaderboard</h2>
         							</div>
     								<div class="modal-body">
-     									<h4>
+     									<h4 id="passage">
      										Do you slide on all your nights like this?<br/>
 											Do you try on all your nights like this? (I might)<br/>
 											Put some spotlight on the slide<br/>
@@ -75,6 +75,30 @@
 		</div>
 	</div>
 
+	<script type="text/javascript">
+		console.log("hihi");
+		var Req = new XMLHttpRequest();
+		var url = "https://musicguessing.herokuapp.com/leaders";
+
+		Req.open("GET", url, true);
+		Req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		Req.send();
+
+		Req.onreadystatechange = function() {
+					if (this.readyState == 4 && this.status == 200) {
+						myJSON = this.responseText;
+						myObj = JSON.parse(myJSON);
+
+						document.getElementById("passage").innerHTML = "";
+
+						for (var i = 0; i < 10; i ++) {
+							document.getElementById("passage").innerHTML += myObj.topTen[i].username;
+							document.getElementById("passage").innerHTML += "<br/>";
+						}
+
+					}
+				}
+	</script>
 </body>
 
 </html>

@@ -1,16 +1,15 @@
 var geocoder;
+var returnLocation;
 
-function getUserLocation() {
-    if (navigator.geolocation) {
-        console.log("successful geolocation");
-        navigator.geolocation.getCurrentPosition(successFunction, errorFunction);
-    }
+function returnLoc() {
+    return returnLocation;
 }
+
 //Get the latitude and the longitude;
 function successFunction(position) {
     var lat = position.coords.latitude;
     var lng = position.coords.longitude;
-    console.log("success function");
+    console.log(1);
     codeLatLng(lat, lng);
 }
 
@@ -20,13 +19,17 @@ function errorFunction() {
 }
 
 function initializeLocation() {
-    console.log("initializing");
+    console.log(3);
     geocoder = new google.maps.Geocoder();
-    getUserLocation();
-
+    if (navigator.geolocation) {
+        // console.log("successful geolocation");
+        navigator.geolocation.getCurrentPosition(successFunction, errorFunction);
+    }
 }
 
 function codeLatLng(lat, lng) {
+
+    console.log(4);
 
     var latlng = new google.maps.LatLng(lat, lng);
     geocoder.geocode({ 'latLng': latlng }, function(results, status) {
@@ -51,9 +54,8 @@ function codeLatLng(lat, lng) {
                     }
                 }
                 //city data
-                return ("Your location: " + state.short_name + ", " + country.long_name);
+                returnLocation = "Your location: " + state.short_name + ", " + country.long_name;
                 // console.log(userLocation);
-                // console.log("Your location: " + state.short_name + ", " + country.long_name);
                 // alert("Your location: " + state.short_name + ", " + country.long_name);
 
             } else {
