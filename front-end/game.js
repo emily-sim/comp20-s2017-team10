@@ -49,37 +49,36 @@ function runGame() {
   var highscore = getUserInfo(user_id);
   var offset = getRandomArbitrary(0, 50);
   var genre = getQuery();
-  correct_answer = getRandomArbitrary(0, 4);  // min inclusive, max exclusive
-  loadPlaylist(genre, offset); // makes request, stores data into array, updates choices
+  
+   
+   for (var i = 0; i < 10; i++) {
 
-  offset = offset + 4;    
-   //while (counter < 10) {
+      startTimer();
+      correct_answer = getRandomArbitrary(0, 4);  // min inclusive, max exclusive
+      loadPlaylist(genre, offset); // makes request, stores data into array, updates choices
+
+      offset = offset + 4;    
       /* run a 30 sec timer that tells you if it is still running or not */
-     // var id = setInterval(round, 1000); /* this goes to function round every second */
+      setTimeout(function () {
+        times_up = true;
+      }, 30000);
 
-    //  function round() {
+      var id = setInterval(round, 1000); /* this goes to function round every second */
+      function round() {
         /* if timer still running */
-          /* if clicked == true */
-            /* clearInterval(id); --> this should reset the interval? */
-            /* continute */
+        if (times_up == false) {
+          if (clicked == true) {
+            clearInterval(id);
+          }
+        } else {
         /* else if counter < 10 (would it still go into this function if interval is over though? ) */
-          /* counter ++ */
-          /* ((((does it auto restart the interval  --  or just call it again)))) */
-          /* loadPlaylist(genre, offset); */
-     // }
+          counter++; 
+          times_up = false;
+          clicked = false;
 
-      /*startTimer();
-      loadPlaylist(genre, offset);
-      if (times_up == true) {
-        counter++;
-        continue;
-      } else if (clicked == true) {
-        continue;
-      } else {
-        
-      }*/
-   // }
-
+        }
+      }
+    }
 }
 
 function getRandomArbitrary(min, max) {
@@ -132,9 +131,9 @@ function getUserInfo(id) {
       return genre[1];
     }
 
-    function loadPlaylist(genre, offset) {
-      spotifyRequest("https://api.spotify.com/v1/search?q=genre%3A" + genre + "&type=track&market=US&limit=4&offset=" + offset);
-    }
+function loadPlaylist(genre, offset) {
+  spotifyRequest("https://api.spotify.com/v1/search?q=genre%3A" + genre + "&type=track&market=US&limit=4&offset=" + offset);
+}
 
     function startTimer() {
         times_up = false;
@@ -146,38 +145,43 @@ function getUserInfo(id) {
         function frame() {
             if (width >= 100) {
               time.innerHTML = "Time's up!";
-              times_up = true;
+              //times_up = true;
               clearInterval(id);
 
             }else {
                 width++;
                 elem.style.width = width + '%';
-                if (width % 3 == 0) {
+                //if (width % 3 == 0) {
                     /****this is counting too fast*******/
-                    time.innerHTML = (30 - width / 3) + ' s';
-                }
+                    //time.innerHTML = (30 - width / 3) + ' s';
+                //}
             }
         }
     }
 
 
-    function updateScore(button_num) {
+function updateScore(button_num) {
 
 
-        var scoreDisplay = document.getElementById("score-display");
+  var scoreDisplay = document.getElementById("score-display");
 
-        /************************************/
-        /* check if answer is correct first */
-        /* if correct -- a "correct!" message?, add to score, stop timer, go to next song which resets timer and buttons */
+  /************************************/
+  /* check if answer is correct first */
+  /* if correct -- a "correct!" message?, add to score, stop timer, go to next song which resets timer and buttons */
 
-        /* add 1 to score, maybe more if got it with less time? */
+  /* add 1 to score, maybe more if got it with less time? */
 
 
 
-        if (button_num == correct_answer) {
-          score += 1;
+  if (button_num == correct_answer) {
+    score += 1;
 
-        } 
-        counter++;
-        scoreDisplay.innerHTML = "Score: " + score;
-    };
+  } 
+  counter++;
+  clicked = true;
+  scoreDisplay.innerHTML = "Score: " + score;
+};
+
+function returnScore() {
+  return score;
+};
