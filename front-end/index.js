@@ -50,7 +50,7 @@ function statusChangeCallback(response) {
     loginButton.style.visibility = "visible";
     logoutButton.style.visibility = "hidden";
     nameLabel.innerHTML = "Guest";
-    profilePic.src = "images/pop.jpg";
+    profilePic.src = "images/guest.png";
     console.log("Not logged in");
   }
 }

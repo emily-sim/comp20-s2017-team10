@@ -8,75 +8,109 @@
 	<!--CSS and Styles-->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link rel="stylesheet" href="index-style.css" type="text/css" />
+	<link rel="stylesheet" href="sidebar.css" type="text/css" />
 	<link href="https://fonts.googleapis.com/css?family=Monoton" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <!--JS and APIs-->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBGVZFqzo2yJlvxgVaoNZH0bKSMjIoPA9c"></script>
-	<script src = "index.js"> </script>
+	<script src="index.js"> </script>
     <script src="sidebar.js"></script>
 </head>
 
 <body>
 	<!--Navigation Bar-->
-	<nav class="navbar navbar-inverse">
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-       				<span class="icon-bar"></span>
-        			<span class="icon-bar"></span>
-        			<span class="icon-bar"></span>
-      			</button>
-				<a class="navbar-brand" href="#">MIXR</a>
+    <div id="navbar-wrapper">
+		<nav class="navbar navbar-inverse">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+	       				<span class="icon-bar"></span>
+	        			<span class="icon-bar"></span>
+	        			<span class="icon-bar"></span>
+	      			</button>
+					<a class="navbar-brand" href="#">MIXR</a>
+				</div>
+				<div class="collapse navbar-collapse" id="myNavbar">
+					<ul class="nav navbar-nav navbar-right">
+						<li>
+							<a data-toggle="modal" data-target=".leaderboardModal" href="#"><span class="glyphicon glyphicon-list-alt"></span> Leaderboard</a>
+							<div class="modal fade leaderboardModal" role="dialog">
+	 							<div class="modal-dialog modal-lg">
+	    							<div class="modal-content">
+	    								<div class="modal-header">
+	          								<button type="button" class="close" data-dismiss="modal">&times;</button>
+	          								<h2 class="modal-title">Leaderboard</h2>
+	        							</div>
+	    								<div class="modal-body">
+	    									<table class="table table-inverse">
+	    									  	<thead>
+												    <tr>
+												    	<th>#</th>
+														<th>Username</th>
+												    	<th>Score</th>
+												    	<th>Location</th>
+												    </tr>
+												</thead>
+												<tbody>
+												</tbody>
+	    									</table>
+	     								</div>
+	     							</div>
+	     						</div>
+	     					</div>
+						</li>
+						<li>
+	                        <a id="menu-toggle"  onclick="initializeLocation()" href="#"><span class="glyphicon glyphicon-user"></span> Account</a>
+						</li>
+					</ul>
+				</div>
 			</div>
-			<div class="collapse navbar-collapse" id="myNavbar">
-				<ul class="nav navbar-nav navbar-right">
-					<li>
-						<a data-toggle="modal" data-target=".leaderboardModal" href="#"><span class="glyphicon glyphicon-list-alt"></span> Leaderboard</a>
-						<div class="modal fade leaderboardModal" role="dialog">
- 							<div class="modal-dialog modal-lg">
-    							<div class="modal-content">
-    								<div class="modal-header">
-          								<button type="button" class="close" data-dismiss="modal">&times;</button>
-          								<h2 class="modal-title">Leaderboard</h2>
-        							</div>
-    								<div class="modal-body">
-    									<table class="table table-inverse">
-    									  	<thead>
-											    <tr>
-											    	<th>#</th>
-													<th>Username</th>
-											    	<th>Score</th>
-											    	<th>Location</th>
-											    </tr>
-											</thead>
-											<tbody>
-											</tbody>
-    									</table>
-     								</div>
-     							</div>
-     						</div>
-     					</div>
-					</li>
-
-					<li>
-						<a href="#" onclick="initializeLocation()"><span class="glyphicon glyphicon-user"></span> Login</a>
-					</li>
-				</ul>
-			</div>
-		</div>
-	</nav>
-
-	<img class="blur" src="images/home-background.gif" alt="albumcovercollage" id="bg-image"></img>
-
-	<div id="container">
-		<div class="intro-text">Discover fresh new tunes.</div>
-		<div class="intro-text">Test your knowledge.</div>
-		<div id="btn-wrapper">
-			<a href="genre.html" class="btn btn-default" id="play-btn">Let's Play!</a>
-		</div>
+		</nav>
 	</div>
+
+	<div id="wrapper">
+		<div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <li>
+                        <img id="profile" src="images/guest.png" class="img-responsive" width="70" height="70">
+                    </li>
+                    <li>
+                        <p id="name"> Guest </p>
+                    </li>
+                    <li>
+                        <p id="score"> Score</p>
+                    </li>
+                    <li>
+                        <p id="location"> Location </p>
+                    </li>
+                    <li>
+                        <a id = "loginButton" href="#" onclick="fblogin()"><span class="glyphicon glyphicon-user"></span> Facebook Login</a>
+                    </li>
+                    <li>
+                        <a id = "logoutButton" href="#" onclick="fblogout()"><span class="glyphicon glyphicon-off"></span> Facebook Logout</a>
+                    </li>
+                </li>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+			<img class="blur" src="images/home-background.gif" alt="albumcovercollage" id="bg-image"></img>
+
+			<div id="container">
+				<div class="intro-text">Discover fresh new tunes.</div>
+				<div class="intro-text">Test your knowledge.</div>
+				<div id="btn-wrapper">
+					<a href="genre.html" class="btn btn-default" id="play-btn">Let's Play!</a>
+				</div>
+			</div>
+        </div>
+	</div>
+
+
 
 	<script type="text/javascript">
 		var Req = new XMLHttpRequest();
@@ -106,6 +140,16 @@
 
 					}
 				}
+	</script>
+
+	<script type="text/javascript">
+		$("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+
+        newScore = returnScore();
+        $("#score").text(newScore);
+    });
 	</script>
 </body>
 
