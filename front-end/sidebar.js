@@ -10,7 +10,7 @@ function successFunction(position) {
     var lat = position.coords.latitude;
     var lng = position.coords.longitude;
     console.log(1);
-    codeLatLng(lat, lng);
+    codeLatLng(lat, lng, changeLocLabel);
 }
 
 function errorFunction() {
@@ -27,7 +27,13 @@ function initializeLocation() {
     }
 }
 
-function codeLatLng(lat, lng) {
+function changeLocLabel(locationString){
+  console.log("callback called")
+  var locationLabel = document.getElementById("location");
+  locationLabel.innerHTML = returnLocation;
+}
+
+function codeLatLng(lat, lng, callback) {
 
     console.log(4);
 
@@ -54,7 +60,8 @@ function codeLatLng(lat, lng) {
                     }
                 }
                 //city data
-                returnLocation = "Your location: " + state.short_name + ", " + country.long_name;
+                returnLocation = state.short_name + ", " + country.long_name;
+                callback(returnLocation);
                 // console.log(userLocation);
                 // alert("Your location: " + state.short_name + ", " + country.long_name);
 
