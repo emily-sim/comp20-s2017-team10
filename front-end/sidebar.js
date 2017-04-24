@@ -1,10 +1,6 @@
 var geocoder;
 var returnLocation;
 
-function returnLoc() {
-    return returnLocation;
-}
-
 //Get the latitude and the longitude;
 function successFunction(position) {
     var lat = position.coords.latitude;

@@ -46,10 +46,10 @@ function runGame() {
   // FIX LATER WITH NEW POST UER FUNCTION
   var user_id = 135;   // hard coded for now
   //var highscore = getUserInfo(user_id);
-  var offset = getRandomArbitrary(0, 50);
-  var genre = getQuery();
+  // var offset = getRandomArbitrary(0, 50);
+  // var genre = getQuery();
   
-  gameLoop(genre, offset);
+  gameLoop();
   /*for (var i = 0; i < 9; i++) {
     setTimeout(gameLoop(genre, offset), 30000)
     offset = offset + 4; 
@@ -59,7 +59,11 @@ function runGame() {
 
 }
 
-function gameLoop(genre, offset) {
+function gameLoop() {
+
+  var offset = getRandomArbitrary(0, 50);
+  var genre = getQuery();
+
   if (counter < 10) {
     startTimer();
     correct_answer = getRandomArbitrary(0, 4);  // min inclusive, max exclusive
@@ -68,7 +72,8 @@ function gameLoop(genre, offset) {
     offset = offset + 4;
     console.log(counter);
     console.log(offset);
-    setTimeout(gameLoop(genre, offset), 30000);
+    window.setTimeout(gameLoop, 30000);
+    // $.delay(3000).alert("haha");
   }
 }
 
