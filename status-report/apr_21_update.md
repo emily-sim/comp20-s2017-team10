@@ -20,3 +20,7 @@ Members: Emily Sim, Sophia Wang, Maddie Payne, Ian Mao, Jose Lemus
 - Back end for the sidebar still needs to be done, specifically linking a user’s high score to their database document
 - The sidebar will display a user’s nearest major city using the Google Geocoder API. We need to link the user’s location to their account because if they are not logged in yet it probably shouldn’t display their location. We don’t necessarily need to link it but only display the location if the state is logged in.
 - Having the game be able to run through all 10 questions
+
+# Comments by Ming
+* "Making Facebook login button look nice" => wouldn't focus on this as there isn't much you can reall do.
+* "- Having the game be able to run through all 10 questions" => top priority
