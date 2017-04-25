@@ -5,7 +5,6 @@ var answers = [];
 var correct_answer;
 var score = 0;
 var counter = 0;
-var clicked = false; 
 
 function spotifyRequest(url) {
   var request = new XMLHttpRequest();
@@ -66,6 +65,7 @@ function gameLoop() {
 
   if (counter < 10) {
     startTimer();
+    enableBtns();
     correct_answer = getRandomArbitrary(0, 4);  // min inclusive, max exclusive
     loadPlaylist(genre, offset); // makes request, stores data into array, updates choices
     counter++;
@@ -75,6 +75,9 @@ function gameLoop() {
     window.setTimeout(gameLoop, 30000);
     // $.delay(3000).alert("haha");
   }
+
+  // call the final page
+  window.open("", "_self");
 }
 
 function startTimer() {
@@ -101,15 +104,25 @@ function startTimer() {
     }
   }
 
+function enableBtns() {
+  document.getElementById("btn0").disabled = false;
+  document.getElementById("btn1").disabled = false;
+  document.getElementById("btn2").disabled = false;
+  document.getElementById("btn3").disabled = false;
+}
+
 
 function updateScore(button_num) {
+  console.log("update score is called!");
+
   var scoreDisplay = document.getElementById("score-display");
 
-  if (button_num == correct_answer && clicked == false) {
-    clicked = true;
+  if (button_num == correct_answer) {
+    // clicked = true;
     score += 1;
-  } 
-  counter++;
+  }
+
+  // counter++;
   scoreDisplay.innerHTML = "Score: " + score;
 
   document.getElementById("btn0").disabled = true;
