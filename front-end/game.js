@@ -5,6 +5,8 @@ var answers = [];
 var correct_answer;
 var score = 0;
 var counter = 0;
+var offset;
+var genre;
 
 function spotifyRequest(url) {
   var request = new XMLHttpRequest();
@@ -22,11 +24,19 @@ function spotifyRequest(url) {
 function storeTrackData(data) {
   for (var i = 0; i < 4; i++) {
     tracks[i] = data.tracks.items[i].name;
-    // img 300px x 300px on API
     albumcovers[i] = data.tracks.items[i].album.images[1].url;
     demos[i] = data.tracks.items[i].preview_url;
     console.log("from spotify request: " + tracks[i] + " " + albumcovers[i] + " " + demos[i]);
   }  
+  correct_answer = getRandomArbitrary(0, 4); //min inclusive, max exclusive
+  // checks if demo uri exists
+  if (demos[correct_answer] == null) {
+    if (correct_answer == '3'){
+      correct_answer--;
+    } else {
+      correct_answer++;
+    }
+  }
   updatePage();
 }
 
@@ -44,40 +54,27 @@ function storeTrackData(data) {
 function runGame() {
   // FIX LATER WITH NEW POST UER FUNCTION
   var user_id = 135;   // hard coded for now
-  //var highscore = getUserInfo(user_id);
-  // var offset = getRandomArbitrary(0, 50);
-  // var genre = getQuery();
-  
+  offset = getRandomArbitrary(0, 50);
+  genre = getQuery();
   gameLoop();
-  /*for (var i = 0; i < 9; i++) {
-    setTimeout(gameLoop(genre, offset), 30000)
-    offset = offset + 4; 
-  }*/
-
-
-
+  window.setTimeout(renderFinalPg, 300000);
 }
 
 function gameLoop() {
-
-  var offset = getRandomArbitrary(0, 50);
-  var genre = getQuery();
-
   if (counter < 10) {
     startTimer();
     enableBtns();
-    correct_answer = getRandomArbitrary(0, 4);  // min inclusive, max exclusive
     loadPlaylist(genre, offset); // makes request, stores data into array, updates choices
     counter++;
     offset = offset + 4;
     console.log(counter);
     console.log(offset);
     window.setTimeout(gameLoop, 30000);
-    // $.delay(3000).alert("haha");
   }
+}
 
-  // call the final page
-  window.open("", "_self");
+function renderFinalPg() {
+  window.open("final-page.html", "_self", false);
 }
 
 function startTimer() {
@@ -118,11 +115,9 @@ function updateScore(button_num) {
   var scoreDisplay = document.getElementById("score-display");
 
   if (button_num == correct_answer) {
-    // clicked = true;
     score += 1;
   }
 
-  // counter++;
   scoreDisplay.innerHTML = "Score: " + score;
 
   document.getElementById("btn0").disabled = true;
@@ -131,6 +126,7 @@ function updateScore(button_num) {
   document.getElementById("btn3").disabled = true;
 };
 
+/* used in sidebar.js */
 function returnScore() {
   return score;
 };
