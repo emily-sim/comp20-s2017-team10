@@ -25,33 +25,6 @@
     font-size: 18px;
 }
 
-.modal  {
-    /*   display: block;*/
-    padding-right: 0px;
-    background-color: rgba(4, 4, 4, 0.5); 
-    }
-   
-    .modal-dialog {
-            top: 20%;
-            width: 60%;
-            position: center;
-            /*margin: 100px;*/
-        }
-        .modal-content {
-                border-radius: 0px;
-                border: none;
-                top: 40%;
-            }
-            .modal-header {
-                    background-color: snow;
-                    color: grey;
-                    text-align: center;
-            }
-            .modal-body {
-                    background-color: snow;
-                    color: grey;
-                    text-align: center;
-                }
 
 #bg-image {
     position: fixed;
