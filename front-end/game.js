@@ -1,3 +1,4 @@
+//var user_id;
 var tracks = [];
 var albumcovers = [];
 var demos = [];
@@ -5,6 +6,7 @@ var answers = [];
 var correct_answer;
 var score = 0;
 var counter = 0;
+var gameOver = false;
 var offset;
 var genre;
 
@@ -74,12 +76,28 @@ function gameLoop() {
 }
 
 function renderFinalPg() {
+  //sendScore();
+  gameOver = true;
   window.open("final-page.html", "_self", false);
+}
+
+function sendScore() {
+  // send back end game score to database
+
+  var request = new XMLHttpRequest();
+  request.open("POST", url, true);
+  request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+  
+  request.onreadystatechange = function() {
+    if (request.readyState === 4 && request.status === 200) {   
+      request.send();
+    } // else -- handle errors
+  }
 }
 
 function fillFinalPg(){
   /* lol score is not dynamically being updated */
-  var hi = score++;
+
   console.log("score is " + score);
   document.getElementById("score-display").innerHTML = "Final Score: " + score;
 
@@ -134,10 +152,15 @@ function updateScore(button_num) {
   document.getElementById("btn3").disabled = true;
 };
 
+function endButton() {
+  console.log("in endButton func");
+  renderFinalPg();
+}
+
 /* used in sidebar.js */
 function returnScore() {
   return score;
-};
+}
 
 function getRandomArbitrary(min, max) {
   var num = Math.random() * (max - min) + min;
@@ -190,5 +213,3 @@ function getQuery(){
 function loadPlaylist(genre, offset) {
   spotifyRequest("https://api.spotify.com/v1/search?q=genre%3A" + genre + "&type=track&market=US&limit=4&offset=" + offset);
 }
-
-

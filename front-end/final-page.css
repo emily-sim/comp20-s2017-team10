@@ -18,28 +18,33 @@ body {
 	padding: 35px;
 }
 
-h1 {
-	font-family: 'Gil Sans Extrabold';
+#final-score-display {
+	/*font-family: 'Gil Sans Extrabold';*/
+	font-family: 'Slabo 27px', serif;
 	text-align: center;
-	font-size: 60px;
+	font-size: 50px;
 	color: #e3dede;
+	outline: white solid thin;
+	padding: 20px;
+	margin-right: 300px;
+	margin-left: 300px;
+	margin-bottom: 40px;
 }
 
 h2 {
-	font-family: 'Arial';
-	font-size: 20px;
+	font-family: 'Gil Sans Extrabold';
+	font-size: 30px;
 	text-align: center;
-	color: #dbd2d2;
-	
+	color: #e3dede;
+	font-style: bold;
 }
 
 p {
-	font-family: 'Roboto Slab';
+	font-family: 'Gil Sans Extrabold';
 	padding-left: 30%;
 	font-size: 25px;
-	color: white;
+	color: #e3dede;
 }
-
 #table {
 	padding-left: 30%;
 }
