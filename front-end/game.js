@@ -77,6 +77,14 @@ function renderFinalPg() {
   window.open("final-page.html", "_self", false);
 }
 
+function fillFinalPg(){
+  /* lol score is not dynamically being updated */
+  var hi = score++;
+  console.log("score is " + score);
+  document.getElementById("score-display").innerHTML = "Final Score: " + score;
+
+}
+
 function startTimer() {
   times_up = false;
   var elem = document.getElementById("bar");
@@ -182,4 +190,5 @@ function getQuery(){
 function loadPlaylist(genre, offset) {
   spotifyRequest("https://api.spotify.com/v1/search?q=genre%3A" + genre + "&type=track&market=US&limit=4&offset=" + offset);
 }
+
 
