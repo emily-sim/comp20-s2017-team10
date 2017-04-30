@@ -65,7 +65,7 @@
         </div>
         <!-- /#sidebar-wrapper -->
         <!-- Game Page Content -->
-        <div id="page-content-wrapper">
+        <div id="game-play-wrapper">
             <h1 id="score-display">Score: 0</h1>
             <!--Timer-->
             <div class="timer-container">
@@ -87,7 +87,6 @@
                             <div id="button-song-name-1"></div>
                         </li>
                     </div>
-               
                     <div class="ui-block-b">
                         <li>
                             <button type="button" id="btn2" class="btn btn-primary btn-outline" data-toggle="button" aria-pressed="false" autocomplete="off" onclick="updateScore(2)"><img id="button-album-cover-2" src="images/default-album-cover.png"></button>
@@ -98,7 +97,6 @@
                             <div id="button-song-name-3"></div>
                         </li>
                     </div>
-
                     <div class="ui-block-c">
                         <li>
                             <button onclick="endButton()" id="quit-btn" type="button" class="btn">End Game</button>
@@ -106,22 +104,35 @@
                     </div>
                 </div>
             </ol>
-            
-        </div> 
-            
+        </div>
         <video constols autoplay id="media">
             <source src=“” type=“audio/mpeg”>
         </video>
-
-        
-         
+    </div>
+    <div id="game_over_wrapper">
+        <div id=header>
+            <h1 id="final-score-display">Score: 0</h1>
+            <h2>Thanks for playing!</h2>
+        </div>
+        <div class="container">
+            <p>Songs Played</p>
+            <table class="table table-condensed" id="played-songs">
+                <thead>
+                    <tr>
+                        <th>Song</th>
+                        <th>Album</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
     </div>
     <script>
     $("#menu-toggle").click(function(e) {
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");
     });
-
     </script>
 </body>
 

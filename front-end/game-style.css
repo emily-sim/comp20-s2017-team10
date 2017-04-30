@@ -148,3 +148,7 @@ ol li {
 #quit-btn {
 	color: #000000;
 }
+
+#game_over_wrapper {
+	display: none;
+}
