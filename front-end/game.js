@@ -30,6 +30,8 @@ function storeTrackData(data) {
         tracks[i] = data.tracks.items[i].name;
         albumcovers[i] = data.tracks.items[i].album.images[1].url;
         demos[i] = data.tracks.items[i].preview_url;
+      //  artists[i] = data.tracks.items[i].album.artists[i].name;
+      //  console.log(artists[i]);
         console.log("from spotify request: " + tracks[i] + " " + albumcovers[i] + " " + demos[i]);
     }
     correct_answer = getRandomArbitrary(0, 4); //min inclusive, max exclusive
@@ -44,24 +46,13 @@ function storeTrackData(data) {
     updatePage();
 }
 
-/*  client side:
- * 1) while loop for 10 songs for one round 
- * 2) load album covers into HTML http://stackoverflow.com/questions/554273/changing-the-image-source-using-jquery
- * 3) autoplay a random demo[] element
- * 4) keep track of user score
- * 5) keep track of album covers and song names of correct songs
- * 6) when round complete -- go to new static page displaying 5) and 4) 
- * server side:
- * 1) get request user info via \players
- * 2) send new high score back using post request \submit
- */
 function runGame() {
     // FIX LATER WITH NEW POST UER FUNCTION
-    var user_id = 135; // hard coded for now
+    var user_id = 135; 
     offset = getRandomArbitrary(0, 50);
     genre = getQuery();
     gameLoop();
-    window.setTimeout(renderFinalPg, 300000);
+    window.setTimeout(renderFinalPg, 50000);
 }
 
 function gameLoop() {
@@ -71,33 +62,40 @@ function gameLoop() {
         loadPlaylist(genre, offset); // makes request, stores data into array, updates choices
         counter++;
         offset = offset + 4;
+        addPlayedSongs();
         console.log(counter);
         console.log(offset);
-        window.setTimeout(gameLoop, 30000);
+        window.setTimeout(gameLoop, 5000);
     }
 }
 
 function renderFinalPg() {
     //sendScore();
-
     gameOver = true;
-    $('#main-game-stuff').hide();
-    $('#final-game-stuff').show();
+    console.log("score is " + score);
+    document.getElementById("final-score-display").innerHTML = "Final Score: " + score;
+    $('#game-play-wrapper').hide();
+    $('#game-over-wrapper').show();
 }
 
 function addPlayedSongs() {
-    var tableBody = $('#played-songs tbody');
-    for (var i = 0; i < songs.length; i++) {
+    var tableBody = $('#played-songs');
+    //var tr = $('#played-songs tbody > tbody').after('<tr><td class="song"></td><td class="album"></td></tr>');
+    var tr = $('<tr><td class="song"></td><td class="album"></td></tr>').appendTo(tableBody);
+    console.log("correct answer in addPlayedSongs " + correct_answer);
+    console.log(tracks[correct_answer]);
+    tr.find("td.song").text(tracks[correct_answer]);
+    //tr.find("td.album").text(albumcovers[i]);
+    /*for (var i = 0; i < tracks.length; i++) {
         var song = tracks[i];
         var tr = $('<tr><td class="song"></td><td class="album"></td></tr>').appendTo(tableBody);
         tr.find("td.song").text(tracks[i]);
         tr.find("td.album").text(albumcovers[i]);
-    }
+    }*/
 }
 
 function sendScore() {
     // send back end game score to database
-
     var request = new XMLHttpRequest();
     request.open("POST", url, true);
     request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
@@ -107,14 +105,6 @@ function sendScore() {
             request.send();
         } // else -- handle errors
     }
-}
-
-function fillFinalPg() {
-    /* lol score is not dynamically being updated */
-
-    console.log("score is " + score);
-    document.getElementById("score-display").innerHTML = "Final Score: " + score;
-
 }
 
 function startTimer() {
@@ -133,10 +123,6 @@ function startTimer() {
         } else {
             width++;
             elem.style.width = width + '%';
-            //if (width % 3 == 0) {
-            /****this is counting too fast*******/
-            //time.innerHTML = (30 - width / 3) + ' s';
-            //}
         }
     }
 }
@@ -167,7 +153,6 @@ function updateScore(button_num) {
 };
 
 function endButton() {
-    console.log("in endButton func");
     renderFinalPg();
 }
 
@@ -192,8 +177,7 @@ function updatePage() {
     document.getElementById("button-album-cover-2").src = img_src;
     img_src = albumcovers[3]
     document.getElementById("button-album-cover-3").src = img_src;
-
-    /* not showing up currently */
+    
     document.getElementById("button-song-name-0").innerHTML = tracks[0];
     document.getElementById("button-song-name-1").innerHTML = tracks[1];
     document.getElementById("button-song-name-2").innerHTML = tracks[2];
@@ -227,3 +211,4 @@ function getQuery() {
 function loadPlaylist(genre, offset) {
     spotifyRequest("https://api.spotify.com/v1/search?q=genre%3A" + genre + "&type=track&market=US&limit=4&offset=" + offset);
 }
+
