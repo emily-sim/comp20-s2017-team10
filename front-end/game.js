@@ -10,6 +10,7 @@ var gameOver = false;
 var offset;
 var genre;
 var trackdata;
+var endgame_timeout;
 
 function spotifyRequest(url) {
     var request = new XMLHttpRequest();
@@ -52,7 +53,7 @@ function runGame() {
     offset = getRandomArbitrary(0, 50);
     genre = getQuery();
     gameLoop();
-    window.setTimeout(renderFinalPg, 50000);
+    endgame_timeout = window.setTimeout(renderFinalPg, 150000);
 }
 
 function gameLoop() {
@@ -65,7 +66,7 @@ function gameLoop() {
         addPlayedSongs();
         console.log(counter);
         console.log(offset);
-        window.setTimeout(gameLoop, 5000);
+        window.setTimeout(gameLoop, 15000);
     }
 }
 
@@ -79,19 +80,12 @@ function renderFinalPg() {
 }
 
 function addPlayedSongs() {
-    var tableBody = $('#played-songs');
-    //var tr = $('#played-songs tbody > tbody').after('<tr><td class="song"></td><td class="album"></td></tr>');
+    var tableBody = $('#played-songs tbody');
     var tr = $('<tr><td class="song"></td><td class="album"></td></tr>').appendTo(tableBody);
     console.log("correct answer in addPlayedSongs " + correct_answer);
     console.log(tracks[correct_answer]);
     tr.find("td.song").text(tracks[correct_answer]);
     //tr.find("td.album").text(albumcovers[i]);
-    /*for (var i = 0; i < tracks.length; i++) {
-        var song = tracks[i];
-        var tr = $('<tr><td class="song"></td><td class="album"></td></tr>').appendTo(tableBody);
-        tr.find("td.song").text(tracks[i]);
-        tr.find("td.album").text(albumcovers[i]);
-    }*/
 }
 
 function sendScore() {
@@ -143,7 +137,7 @@ function updateScore(button_num) {
     if (button_num == correct_answer) {
         score += 1;
     }
-
+    
     scoreDisplay.innerHTML = "Score: " + score;
 
     document.getElementById("btn0").disabled = true;
@@ -153,6 +147,10 @@ function updateScore(button_num) {
 };
 
 function endButton() {
+    counter = 10;
+    document.getElementById("media").src = "";
+    addPlayedSongs();
+    // clearTimeout(endgame_timeout);
     renderFinalPg();
 }
 
