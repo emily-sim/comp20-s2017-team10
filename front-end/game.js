@@ -1,6 +1,7 @@
 //var user_id;
 var tracks = [];
 var albumcovers = [];
+var artists = [];
 var demos = [];
 var answers = [];
 var correct_answer;
@@ -31,9 +32,9 @@ function storeTrackData(data) {
         tracks[i] = data.tracks.items[i].name;
         albumcovers[i] = data.tracks.items[i].album.images[1].url;
         demos[i] = data.tracks.items[i].preview_url;
-      //  artists[i] = data.tracks.items[i].album.artists[i].name;
-      //  console.log(artists[i]);
-        console.log("from spotify request: " + tracks[i] + " " + albumcovers[i] + " " + demos[i]);
+        // console.log(data.tracks.items[i].album.artists[0].name);
+        artists[i] = data.tracks.items[i].album.artists[0].name;
+        // console.log("from spotify request: " + tracks[i] + " " + albumcovers[i] + " " + demos[i]);
     }
     correct_answer = getRandomArbitrary(0, 4); //min inclusive, max exclusive
     // checks if demo uri exists
@@ -49,7 +50,7 @@ function storeTrackData(data) {
 
 function runGame() {
     // FIX LATER WITH NEW POST UER FUNCTION
-    var user_id = 135; 
+    var user_id = 135;
     offset = getRandomArbitrary(0, 50);
     genre = getQuery();
     gameLoop();
@@ -71,7 +72,6 @@ function gameLoop() {
 }
 
 function renderFinalPg() {
-    //sendScore();
     gameOver = true;
     console.log("score is " + score);
     document.getElementById("final-score-display").innerHTML = "Final Score: " + score;
@@ -81,11 +81,11 @@ function renderFinalPg() {
 
 function addPlayedSongs() {
     var tableBody = $('#played-songs tbody');
-    var tr = $('<tr><td class="song"></td><td class="album"></td></tr>').appendTo(tableBody);
+    var tr = $('<tr><td class="song"></td><td class="artist"></td></tr>').appendTo(tableBody);
     console.log("correct answer in addPlayedSongs " + correct_answer);
     console.log(tracks[correct_answer]);
     tr.find("td.song").text(tracks[correct_answer]);
-    //tr.find("td.album").text(albumcovers[i]);
+    tr.find("td.artist").text(artists[correct_answer]);
 }
 
 function sendScore() {
@@ -137,7 +137,7 @@ function updateScore(button_num) {
     if (button_num == correct_answer) {
         score += 1;
     }
-    
+
     scoreDisplay.innerHTML = "Score: " + score;
 
     document.getElementById("btn0").disabled = true;
@@ -175,7 +175,7 @@ function updatePage() {
     document.getElementById("button-album-cover-2").src = img_src;
     img_src = albumcovers[3]
     document.getElementById("button-album-cover-3").src = img_src;
-    
+
     document.getElementById("button-song-name-0").innerHTML = tracks[0];
     document.getElementById("button-song-name-1").innerHTML = tracks[1];
     document.getElementById("button-song-name-2").innerHTML = tracks[2];
@@ -209,4 +209,3 @@ function getQuery() {
 function loadPlaylist(genre, offset) {
     spotifyRequest("https://api.spotify.com/v1/search?q=genre%3A" + genre + "&type=track&market=US&limit=4&offset=" + offset);
 }
-
