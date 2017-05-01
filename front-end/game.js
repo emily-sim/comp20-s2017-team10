@@ -50,11 +50,13 @@ function storeTrackData(data) {
 
 function runGame() {
     // FIX LATER WITH NEW POST UER FUNCTION
+    $('#game-play-wrapper').show();
+    $('#game-over-wrapper').hide();
     var user_id = 135;
     offset = getRandomArbitrary(0, 50);
     genre = getQuery();
     gameLoop();
-    endgame_timeout = window.setTimeout(renderFinalPg, 150000);
+    endgame_timeout = window.setTimeout(renderFinalPg, 300000);
 }
 
 function gameLoop() {
@@ -67,7 +69,7 @@ function gameLoop() {
         addPlayedSongs();
         console.log(counter);
         console.log(offset);
-        window.setTimeout(gameLoop, 15000);
+        window.setTimeout(gameLoop, 30000);
     }
 }
 

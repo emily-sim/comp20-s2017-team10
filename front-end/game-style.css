@@ -152,3 +152,44 @@ ol li {
 #game_over_wrapper {
 	display: none;
 }
+
+#header {
+	text-align: center;
+	border: 1px solid white;
+	margin-left: 20%;
+	margin-right: 20%;
+}
+
+#final-score-display {
+	font-family: 'Slabo 27px', serif;
+	text-align: center;
+	font-size: 50px;
+	color: #e3dede;
+	font-style: bold;
+}
+
+#final-message {
+	font-family: 'Gil Sans Extrabold';
+	font-size: 30px;
+	text-align: center;
+	color: #e3dede;
+	font-style: bold;
+}
+
+p {
+	font-family: 'Gil Sans Extrabold';
+	padding-top: 30px;
+	font-size: 25px;
+	color: #e3dede;
+}
+
+.table table-condensed {
+	border-collapse: collapse;
+}
+
+td, tr {
+	border: 1px solid black;
+  	padding: 0.5rem;
+  	text-align: left;
+	color: #e3dede;
+}
