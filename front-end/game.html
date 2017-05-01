@@ -197,15 +197,15 @@
                             username = myObj.topTen[i].username;
                             score = myObj.topTen[i].score;
 
-                            i++:
+                            var rank = i + 1;
 
                             var tr = "  <tr>\
-                                        <th>" + i + "</th>\
+                                        <th>" + rank + "</th>\
                                         <td>" + username + "</td>\
                                         <td>" + score + "</td>\
                                         <td>" + score + "</td>\
                                         </tr>";
-                            $('leaderboard-table tbody').append(tr);
+                            $('table tbody').append(tr);
                         }
 
                     }
