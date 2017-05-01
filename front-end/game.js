@@ -106,7 +106,7 @@ function startTimer() {
     var elem = document.getElementById("bar");
     //var time = document.getElementById("timer");
     var width = 0;
-    var id = setInterval(frame, 300);
+    var id = setInterval(frame, 150);
 
     function frame() {
         if (width >= 100) {
