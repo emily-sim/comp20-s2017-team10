@@ -5,7 +5,7 @@ var artists = [];
 var demos = [];
 var answers = [];
 var correct_answer;
-var score = 0;
+var myscore = 0;
 var counter = 0;
 var gameOver = false;
 var offset;
@@ -81,10 +81,10 @@ function gameLoop() {
 
 function renderFinalPg() {
     gameOver = true;
-    console.log("score is " + score);
+    console.log("score is " + myscore);
     sendScore();
     document.getElementById("media").src = "";
-    document.getElementById("final-score-display").innerHTML = "Final Score: " + score;
+    document.getElementById("final-score-display").innerHTML = "Final Score: " + myscore;
     $('#game-play-wrapper').hide();
     $('#game-over-wrapper').show();
     $('#media').hide();
@@ -93,8 +93,6 @@ function renderFinalPg() {
 function addPlayedSongs() {
     var tableBody = $('#played-songs tbody');
     var tr = $('<tr><td class="song"></td><td class="artist"></td></tr>').appendTo(tableBody);
-    console.log("correct answer in addPlayedSongs " + correct_answer);
-    console.log(tracks[correct_answer]);
     tr.find("td.song").text(tracks[correct_answer]);
     tr.find("td.artist").text(artists[correct_answer]);
 }
@@ -107,7 +105,7 @@ function sendScore() {
       if (response.status === 'connected') {
         var oReq = new XMLHttpRequest();
         var url = "https://musicguessing.herokuapp.com/endRound";
-        var newScore = score + runningScore;
+        var newScore = myscore + runningScore;
         var params = "userid=" + response.authResponse.userID+ "&score=" + newScore;
 //        console.log(response.id);
         oReq.open("POST",url,true);
@@ -159,10 +157,10 @@ function updateScore(button_num) {
     var scoreDisplay = document.getElementById("score-display");
 
     if (button_num == correct_answer) {
-        score += 1;
+        myscore += 1;
     }
 
-    scoreDisplay.innerHTML = "Score: " + score;
+    scoreDisplay.innerHTML = "Score: " + myscore;
 
     document.getElementById("btn0").disabled = true;
     document.getElementById("btn1").disabled = true;
@@ -180,7 +178,7 @@ function endButton() {
 
 /* used in sidebar.js */
 function returnScore() {
-    return score;
+    return myscore;
 }
 
 function getRandomArbitrary(min, max) {

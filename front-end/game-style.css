@@ -181,5 +181,6 @@ ol li {
 	border: 1px solid black;
   	padding: 0.5rem;
   	text-align: left;
-	color: #e3dede;
+  	color: gainsboro;
+  	font-size: 20px;
 }

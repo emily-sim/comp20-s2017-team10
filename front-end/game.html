@@ -168,14 +168,12 @@
         <div class="container">
             <p id="songsplayed">Songs Played</p>
             <table class="table table-condensed" id="played-songs">
-                <thead>
+                <thread>
                     <tr>
                         <th>Song</th>
                         <th>Artist</th>
                     </tr>
-                </thead>
-                <tbody>
-                </tbody>
+                </thread>
             </table>
         </div>
     </div>
@@ -205,7 +203,7 @@
                                         <td>" + score + "</td>\
                                         <td>" + score + "</td>\
                                         </tr>";
-                            $('table tbody').append(tr);
+                            $('#leaderboard-table tbody').append(tr);
                         }
 
                     }
