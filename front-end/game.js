@@ -53,11 +53,16 @@ function runGame() {
     // FIX LATER WITH NEW POST UER FUNCTION
     $('#game-play-wrapper').show();
     $('#game-over-wrapper').hide();
+
+    $('#media').hide();
+
+
+    
     var user_id = 135;
     offset = getRandomArbitrary(0, 50);
     genre = getQuery();
     gameLoop();
-    endgame_timeout = window.setTimeout(renderFinalPg, 300000);
+    endgame_timeout = window.setTimeout(renderFinalPg, 150000);
 }
 
 function gameLoop() {
@@ -70,7 +75,7 @@ function gameLoop() {
         addPlayedSongs();
         console.log(counter);
         console.log(offset);
-        window.setTimeout(gameLoop, 30000);
+        window.setTimeout(gameLoop, 15000);
     }
 }
 
@@ -81,6 +86,7 @@ function renderFinalPg() {
     document.getElementById("final-score-display").innerHTML = "Final Score: " + score;
     $('#game-play-wrapper').hide();
     $('#game-over-wrapper').show();
+    $('#media').hide();
 }
 
 function addPlayedSongs() {
