@@ -42,7 +42,33 @@
                 </div>
                 <div class="collapse navbar-collapse" id="myNavbar">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#"><span class="glyphicon glyphicon-list-alt"></span>Leaderboard</a></li>
+                        <li>
+                            <a data-toggle="modal" data-target=".leaderboardModal" href="#"><span class="glyphicon glyphicon-list-alt"></span> Leaderboard</a>
+                            <div class="modal fade leaderboardModal" role="dialog">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                            <h3 class="modal-title">Leaderboard</h3>
+                                        </div>
+                                        <div class="modal-body">
+                                            <table class="table table-inverse">
+                                                <thead>
+                                                    <tr>
+                                                        <th>#</th>
+                                                        <th>Username</th>
+                                                        <th>Score</th>
+                                                        <th>Location</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
                         <li><a id="menu-toggle" onclick="initializeLocation()" href="#"><span class="glyphicon glyphicon-user"></span> Account</a></li>
                     </ul>
                 </div>
