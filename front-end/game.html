@@ -52,7 +52,7 @@
                                             <h3 class="modal-title">Leaderboard</h3>
                                         </div>
                                         <div class="modal-body">
-                                            <table class="table table-inverse">
+                                            <table class="table table-inverse" id='leaderboard-table'>
                                                 <thead>
                                                     <tr>
                                                         <th>#</th>
@@ -166,7 +166,7 @@
             <h2 id="final-message">Thanks for playing!</h2>
         </div>
         <div class="container">
-            <p>Songs Played</p>
+            <p id="songsplayed">Songs Played</p>
             <table class="table table-condensed" id="played-songs">
                 <thead>
                     <tr>
@@ -179,6 +179,39 @@
             </table>
         </div>
     </div>
+
+    <script type="text/javascript">
+        var Req = new XMLHttpRequest();
+        var url = "https://musicguessing.herokuapp.com/leaders";
+
+        Req.open("GET", url, true);
+        Req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        Req.send();
+
+        Req.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        myJSON = this.responseText;
+                        myObj = JSON.parse(myJSON);
+
+                        for (var i = 0; i < 10; i ++) {
+                            username = myObj.topTen[i].username;
+                            score = myObj.topTen[i].score;
+
+                            i++:
+
+                            var tr = "  <tr>\
+                                        <th>" + i + "</th>\
+                                        <td>" + username + "</td>\
+                                        <td>" + score + "</td>\
+                                        <td>" + score + "</td>\
+                                        </tr>";
+                            $('leaderboard-table tbody').append(tr);
+                        }
+
+                    }
+                }
+    </script>
+
 
     <script>
     $("#menu-toggle").click(function(e) {

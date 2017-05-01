@@ -166,7 +166,7 @@ ol li {
 	font-style: bold;
 }
 
-p {
+#songsplayed {
 	font-family: 'Gil Sans Extrabold';
 	padding-top: 30px;
 	font-size: 25px;
@@ -177,7 +177,7 @@ p {
 	border-collapse: collapse;
 }
 
-td, tr {
+#played-songs {
 	border: 1px solid black;
   	padding: 0.5rem;
   	text-align: left;
