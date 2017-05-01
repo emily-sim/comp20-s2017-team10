@@ -83,6 +83,7 @@ function renderFinalPg() {
     gameOver = true;
     console.log("score is " + score);
     sendScore();
+    document.getElementById("media").src = "";
     document.getElementById("final-score-display").innerHTML = "Final Score: " + score;
     $('#game-play-wrapper').hide();
     $('#game-over-wrapper').show();
@@ -171,7 +172,7 @@ function updateScore(button_num) {
 
 function endButton() {
     counter = 10;
-    document.getElementById("media").src = "";
+    //document.getElementById("media").src = "";
     addPlayedSongs();
     // clearTimeout(endgame_timeout);
     renderFinalPg();
