@@ -43,7 +43,7 @@
                 <div class="collapse navbar-collapse" id="myNavbar">
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="#"><span class="glyphicon glyphicon-list-alt"></span>Leaderboard</a></li>
-                        <li><a id="menu-toggle" onclick="initializeLocation()" href="#"><span class="glyphicon glyphicon-user"></span>Login</a></li>
+                        <li><a id="menu-toggle" onclick="initializeLocation()" href="#"><span class="glyphicon glyphicon-user"></span> Account</a></li>
                     </ul>
                 </div>
             </div>
@@ -147,9 +147,9 @@
     $("#menu-toggle").click(function(e) {
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");
-        newScore = returnScore();
-        console.log(newScore);
-        $("#score").text(newScore);
+        //newScore = returnScore();
+        //console.log(newScore);
+        //$("#score").text(newScore);
     });
     </script>
 </body>
