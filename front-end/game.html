@@ -42,8 +42,34 @@
                 </div>
                 <div class="collapse navbar-collapse" id="myNavbar">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#"><span class="glyphicon glyphicon-list-alt"></span>Leaderboard</a></li>
-                        <li><a id="menu-toggle" onclick="initializeLocation()" href="#"><span class="glyphicon glyphicon-user"></span>Login</a></li>
+                        <li>
+                            <a data-toggle="modal" data-target=".leaderboardModal" href="#"><span class="glyphicon glyphicon-list-alt"></span> Leaderboard</a>
+                            <div class="modal fade leaderboardModal" role="dialog">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                            <h3 class="modal-title">Leaderboard</h3>
+                                        </div>
+                                        <div class="modal-body">
+                                            <table class="table table-inverse">
+                                                <thead>
+                                                    <tr>
+                                                        <th>#</th>
+                                                        <th>Username</th>
+                                                        <th>Score</th>
+                                                        <th>Location</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li><a id="menu-toggle" onclick="initializeLocation()" href="#"><span class="glyphicon glyphicon-user"></span> Account</a></li>
                     </ul>
                 </div>
             </div>
@@ -89,32 +115,43 @@
             <!--Multiple Choice Options-->
             <ol class="choices">
                 <h2>Can you guess the song?</h2>
-                <div class="ui-grid-a">
-                    <div class="ui-block-a">
-                        <li>
-                            <button type="button" id="btn0" class="btn btn-primary btn-outline" data-toggle="button" aria-pressed="false" autocomplete="off" onclick="updateScore(0)"><img id="button-album-cover-0" src="images/default-album-cover.png"></button>
-                            <div id="button-song-name-0"></div>
-                        </li>
-                        <li>
-                            <button type="button" id="btn1" class="btn btn-primary btn-outline" data-toggle="button" aria-pressed="false" autocomplete="off" onclick="updateScore(1)"><img id="button-album-cover-1" src="images/default-album-cover.png"></button>
-                            <div id="button-song-name-1"></div>
-                        </li>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <li>
+                                    <button type="button" id="btn0" class="btn btn-primary btn-outline" data-toggle="button" aria-pressed="false" autocomplete="off" onclick="updateScore(0)"><img id="button-album-cover-0" src="images/default-album-cover.png"></button>
+                                    <div id="button-song-name-0"></div>
+                                </li>
+                            </div>
+                            <div class="col-md-3">
+                                <li>
+                                    <button type="button" id="btn1" class="btn btn-primary btn-outline" data-toggle="button" aria-pressed="false" autocomplete="off" onclick="updateScore(1)"><img id="button-album-cover-1" src="images/default-album-cover.png"></button>
+                                    <div id="button-song-name-1"></div>
+                                </li>
+                            </div>
+                            <div class="col-md-3">
+                                <li>
+                                    <button type="button" id="btn2" class="btn btn-primary btn-outline" data-toggle="button" aria-pressed="false" autocomplete="off" onclick="updateScore(2)"><img id="button-album-cover-2" src="images/default-album-cover.png"></button>
+                                    <div id="button-song-name-2"></div>
+                                </li>
+                            </div>
+                            <div class="col-md-3">
+                                <li>
+                                    <button type="button" id="btn3" class="btn btn-primary btn-outline" data-toggle="button" aria-pressed="false" autocomplete="off" onclick="updateScore(3)"><img id="button-album-cover-3" src="images/default-album-cover.png"></button>
+                                    <div id="button-song-name-3"></div>
+                                </li>
+                            </div>
+                        </div>
+                        <div class="row" id="endGameRow">
+                            <div class="col-md-12">
+                                <div id="endGame">
+                                    <button onclick="endButton()" id="quit-btn" type="button" class="btn">End Game</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="ui-block-b">
-                        <li>
-                            <button type="button" id="btn2" class="btn btn-primary btn-outline" data-toggle="button" aria-pressed="false" autocomplete="off" onclick="updateScore(2)"><img id="button-album-cover-2" src="images/default-album-cover.png"></button>
-                            <div id="button-song-name-2"></div>
-                        </li>
-                        <li>
-                            <button type="button" id="btn3" class="btn btn-primary btn-outline" data-toggle="button" aria-pressed="false" autocomplete="off" onclick="updateScore(3)"><img id="button-album-cover-3" src="images/default-album-cover.png"></button>
-                            <div id="button-song-name-3"></div>
-                        </li>
-                    </div>
-                    <div class="ui-block-c">
-                        <li>
-                            <button onclick="endButton()" id="quit-btn" type="button" class="btn">End Game</button>
-                        </li>
-                    </div>
+                    <!-- </div> -->
+
                 </div>
             </ol>
         </div>
@@ -147,9 +184,9 @@
     $("#menu-toggle").click(function(e) {
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");
-        newScore = returnScore();
-        console.log(newScore);
-        $("#score").text(newScore);
+        //newScore = returnScore();
+        //console.log(newScore);
+        //$("#score").text(newScore);
     });
     </script>
 </body>

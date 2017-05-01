@@ -4,6 +4,7 @@ function statusChangeCallback(response) {
   var logoutButton = document.getElementById("logoutButton");
   var profilePic = document.getElementById("profile");
   var nameLabel = document.getElementById("name");
+  var scoreLabel = document.getElementById("score");
 
 
   if (response.status === 'connected') {
@@ -29,6 +30,9 @@ function statusChangeCallback(response) {
             if(oReq.readyState === 4 && oReq.status === 200){
               var resp = oReq.responseText;
               resp = (JSON.parse(resp));
+              console.log(resp);
+              console.log(resp.player[0].score);
+              scoreLabel.innerHTML = resp.player[0].score;
             }
           }
 
@@ -51,6 +55,7 @@ function statusChangeCallback(response) {
     logoutButton.style.visibility = "hidden";
     nameLabel.innerHTML = "Guest";
     profilePic.src = "images/guest.png";
+    scoreLabel.innerHTML = 0;
     console.log("Not logged in");
   }
 }
