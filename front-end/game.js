@@ -1,4 +1,3 @@
-//var user_id;
 var geocoder = new google.maps.Geocoder();
 var tracks = [];
 var albumcovers = [];
@@ -174,7 +173,7 @@ function updateScore(button_num) {
 function endButton() {
     counter = 10;
     //document.getElementById("media").src = "";
-    addPlayedSongs();
+    //addPlayedSongs();
     // clearTimeout(endgame_timeout);
     renderFinalPg();
 }
