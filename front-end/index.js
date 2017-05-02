@@ -1,6 +1,6 @@
 // This is called with the results from from FB.getLoginStatus().
 
-
+var geocoder = new google.maps.Geocoder();
 function statusChangeCallback(response) {
   var loginButton = document.getElementById("loginButton");
   var logoutButton = document.getElementById("logoutButton");
@@ -160,12 +160,18 @@ function errorFunction() {
 
 function initializeLocation() {
     console.log(3);
-    geocoder = new google.maps.Geocoder();
+//    geocoder = new google.maps.Geocoder();
     if (navigator.geolocation) {
         // console.log("successful geolocation");
         navigator.geolocation.getCurrentPosition(successFunction, errorFunction);
     }
 }
+
+
+function returnLoc(loc){
+  return loc;
+}
+
 
 function changeLocLabel(locationString){
   console.log("callback called")
@@ -203,6 +209,7 @@ function codeLatLng(lat, lng, callback) {
                 returnLocation = state.short_name + ", " + country.long_name;
                 callback(returnLocation);
                 // console.log(userLocation);
+                console.log(returnLocation);
                 // alert("Your location: " + state.short_name + ", " + country.long_name);
 
             } else {
