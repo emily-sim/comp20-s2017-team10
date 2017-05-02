@@ -1,4 +1,5 @@
 //var user_id;
+var geocoder = new google.maps.Geocoder();
 var tracks = [];
 var albumcovers = [];
 var artists = [];
@@ -57,7 +58,7 @@ function runGame() {
     $('#media').hide();
 
 
-    
+
     var user_id = 135;
     offset = getRandomArbitrary(0, 50);
     genre = getQuery();
@@ -412,7 +413,7 @@ function errorFunction() {
 
 function initializeLocation() {
     console.log(3);
-    geocoder = new google.maps.Geocoder();
+//    geocoder = new google.maps.Geocoder();
     if (navigator.geolocation) {
         // console.log("successful geolocation");
         navigator.geolocation.getCurrentPosition(successFunction, errorFunction);

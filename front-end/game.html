@@ -177,6 +177,8 @@
         </div>
     </div>
 
+
+
     <script type="text/javascript">
         var Req = new XMLHttpRequest();
         var url = "https://musicguessing.herokuapp.com/leaders";
@@ -189,24 +191,29 @@
                     if (this.readyState == 4 && this.status == 200) {
                         myJSON = this.responseText;
                         myObj = JSON.parse(myJSON);
+                        var rank = 0;
+                        console.log(myObj);
+                        myObj.topTen.forEach(function(listItem, index){
+                            console.log(listItem);
+                            var lat = listItem.lat;
+														var lng = listItem.lng;
 
-                        for (var i = 0; i < 10; i ++) {
-                            username = myObj.topTen[i].username;
-                            score = myObj.topTen[i].score;
-
-                            var rank = i + 1;
-
-                            var tr = "  <tr>\
-                                        <th>" + rank + "</th>\
-                                        <td>" + username + "</td>\
-                                        <td>" + score + "</td>\
-                                        <td>" + score + "</td>\
-                                        </tr>";
-                            $('#leaderboard-table tbody').append(tr);
+                            var place;
+                            codeLatLng(lat,lng, function(response){
+                              //place = response;
+                              rank++;
+                              console.log("inside callback" + response + " " + listItem.username);
+                              var tr = "  <tr>\
+                                          <th>" + rank + "</th>\
+                                          <td>" + listItem.username + "</td>\
+                                          <td>" + listItem.score + "</td>\
+                                          <td>" + response + "</td>\
+                                          </tr>";
+                          $('#leaderboard-table tbody').append(tr);                            });
+                          })
                         }
-
                     }
-                }
+
     </script>
 
 
