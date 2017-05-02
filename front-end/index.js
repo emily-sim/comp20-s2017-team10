@@ -17,15 +17,12 @@ function statusChangeCallback(response) {
       FB.api (
       '/me', {fields: "first_name, last_name"},
       function (response) {
-        console.log("Inside FB API function");
-        console.log(response);
         if (response && !response.error) {
           var name = response.first_name + " " + response.last_name;
           nameLabel.innerHTML = name;
           var oReq = new XMLHttpRequest();
           var url = "https://musicguessing.herokuapp.com/username";
           var params = "userid=" + response.id + "&username=" + name;
-          console.log(params);
           oReq.open("POST",url,true);
           oReq.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
           oReq.send(params);
@@ -33,8 +30,6 @@ function statusChangeCallback(response) {
             if(oReq.readyState === 4 && oReq.status === 200){
               var resp = oReq.responseText;
               resp = (JSON.parse(resp));
-              console.log(resp);
-              console.log(resp.players[0].score);
 
               if(resp.players[0].score == null || isNaN(resp.players[0].score)) {
                 scoreLabel.innerHTML = 0;
@@ -65,7 +60,6 @@ function statusChangeCallback(response) {
     nameLabel.innerHTML = "Guest";
     profilePic.src = "images/guest.png";
     scoreLabel.innerHTML = 0;
-    console.log("Not logged in");
   }
 }
 
@@ -126,26 +120,19 @@ var returnLocation;
 function successFunction(position) {
     var lat = position.coords.latitude;
     var lng = position.coords.longitude;
-    console.log(1);
-    console.log(lat);
-    console.log(lng);
     FB.getLoginStatus(function(response) {
-      console.log("Inside check");
-      console.log(response);
+
       if (response.status === 'connected') {
         var oReq = new XMLHttpRequest();
         var url = "https://musicguessing.herokuapp.com/newLoc";
         var params = "userid=" + response.authResponse.userID+ "&lat=" + lat + "&lng=" + lng;
-//        console.log(response.id);
         oReq.open("POST",url,true);
         oReq.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         oReq.send(params);
         oReq.onreadystatechange = function(){
           if(oReq.readyState === 4 && oReq.status === 200){
-            console.log("Should have changed");
             var resp = oReq.responseText;
             resp = (JSON.parse(resp));
-            console.log(resp);
           }
       }
     }
@@ -154,15 +141,11 @@ codeLatLng(lat, lng, changeLocLabel);
 }
 
 function errorFunction() {
-    console.log("error");
     alert("Geocoder failed");
 }
 
 function initializeLocation() {
-    console.log(3);
-//    geocoder = new google.maps.Geocoder();
     if (navigator.geolocation) {
-        // console.log("successful geolocation");
         navigator.geolocation.getCurrentPosition(successFunction, errorFunction);
     }
 }
@@ -174,22 +157,17 @@ function returnLoc(loc){
 
 
 function changeLocLabel(locationString){
-  console.log("callback called")
   var locationLabel = document.getElementById("location");
   locationLabel.innerHTML = returnLocation;
 }
 
 function codeLatLng(lat, lng, callback) {
 
-    console.log(4);
-
     var latlng = new google.maps.LatLng(lat, lng);
     geocoder.geocode({ 'latLng': latlng }, function(results, status) {
         if (status == google.maps.GeocoderStatus.OK) {
-            // console.log(results)
             if (results[1]) {
                 //formatted address
-                // alert(results[0].formatted_address)
                 //find country name
                 for (var i = 0; i < results[0].address_components.length; i++) {
                     for (var b = 0; b < results[0].address_components[i].types.length; b++) {
@@ -208,9 +186,6 @@ function codeLatLng(lat, lng, callback) {
                 //city data
                 returnLocation = state.short_name + ", " + country.long_name;
                 callback(returnLocation);
-                // console.log(userLocation);
-                console.log(returnLocation);
-                // alert("Your location: " + state.short_name + ", " + country.long_name);
 
             } else {
                 // alert("No results found");

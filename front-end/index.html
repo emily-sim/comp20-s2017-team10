@@ -16,8 +16,6 @@
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBGVZFqzo2yJlvxgVaoNZH0bKSMjIoPA9c"></script>
 	<script src="index.js"> </script>
-<!--	<script src="game.js"> </script> -->
-<!--    <script src="sidebar.js"></script> -->
 </head>
 
 <body>
@@ -125,9 +123,7 @@
 											myObj = JSON.parse(myJSON);
 											var rank = 0;
 											var score = 0;
-											console.log(myObj);
 											myObj.topTen.forEach(function(listItem, index){
-													console.log(listItem);
 													var lat = listItem.lat;
 													var lng = listItem.lng;
 
@@ -140,27 +136,23 @@
 															score = 0;
 														}
 														rank++;
-														console.log("inside callback" + response + " " + listItem.username);
 														var tr = "  <tr>\
-																				<th>" + rank + "</th>\
-																				<td>" + listItem.username + "</td>\
-																				<td>" + score + "</td>\
-																				<td>" + response + "</td>\
-																				</tr>";
+																	<th>" + rank + "</th>\
+																	<td>" + listItem.username + "</td>\
+																	<td>" + score + "</td>\
+																	<td>" + response + "</td>\
+																	</tr>";
 														$('table tbody').append(tr);
 													});
-												})
-											}
+											})
 									}
+			}
 	</script>
 
 	<script type="text/javascript">
 		$("#menu-toggle").click(function(e) {
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");
-
-        //newScore = returnScore();
-        //$("#score").text(newScore);
     });
 	</script>
 </body>
