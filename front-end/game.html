@@ -189,6 +189,7 @@
                         myJSON = this.responseText;
                         myObj = JSON.parse(myJSON);
                         var rank = 0;
+                        var score = 0;
                         console.log(myObj);
                         myObj.topTen.forEach(function(listItem, index){
                             console.log(listItem);
@@ -197,20 +198,26 @@
 
                             var place;
                             codeLatLng(lat,lng, function(response){
-                              rank++;
-                              console.log("inside callback" + response + " " + listItem.username);
-                              var tr = "  <tr>\
-                                          <th>" + rank + "</th>\
-                                          <td>" + listItem.username + "</td>\
-                                          <td>" + listItem.score + "</td>\
-                                          <td>" + response + "</td>\
-                                          </tr>";
+                              if(listItem.score != null && listItem.score != isNaN(listItem.score)){
+  															score = listItem.score;
+  														}else{
+  															score = 0;
+  														}
+  														rank++;
+  														console.log("inside callback" + response + " " + listItem.username);
+  														var tr = "  <tr>\
+  																				<th>" + rank + "</th>\
+  																				<td>" + listItem.username + "</td>\
+  																				<td>" + score + "</td>\
+  																				<td>" + response + "</td>\
+  																				</tr>";
                           $('#leaderboard-table tbody').append(tr);                            });
                           })
                         }
                     }
 
     </script>
+    $('#leaderboard-table tbody').append(tr);                            });
 
 
     <script>
