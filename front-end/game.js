@@ -83,6 +83,8 @@ function renderFinalPg() {
     gameOver = true;
     console.log("score is " + myscore);
     sendScore();
+    addPlayedSongs();
+
     document.getElementById("media").src = "";
     document.getElementById("final-score-display").innerHTML = "Final Score: " + myscore;
     $('#game-play-wrapper').hide();
