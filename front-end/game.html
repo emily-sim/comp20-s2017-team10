@@ -150,7 +150,6 @@
                             </div>
                         </div>
                     </div>
-                    <!-- </div> -->
 
                 </div>
             </ol>
@@ -177,8 +176,6 @@
         </div>
     </div>
 
-
-
     <script type="text/javascript">
         var Req = new XMLHttpRequest();
         var url = "https://musicguessing.herokuapp.com/leaders";
@@ -200,7 +197,6 @@
 
                             var place;
                             codeLatLng(lat,lng, function(response){
-                              //place = response;
                               rank++;
                               console.log("inside callback" + response + " " + listItem.username);
                               var tr = "  <tr>\
@@ -221,9 +217,6 @@
     $("#menu-toggle").click(function(e) {
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");
-        //newScore = returnScore();
-        //console.log(newScore);
-        //$("#score").text(newScore);
     });
     </script>
 </body>
